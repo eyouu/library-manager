@@ -34,6 +34,10 @@
             <c:param name="readerId" value="${tempReader.id}" />
         </c:url>
 
+        <c:url var="deleteLink" value="/reader/deleteReader" >
+            <c:param name="readerId" value="${tempReader.id}" />
+        </c:url>
+
         <tr>
             <td>${tempReader.firstName}</td>
             <td>${tempReader.lastName}</td>
@@ -46,12 +50,13 @@
             <td>
                 <a href="${updateLing}">Update</a>
                 |
-                <a href="#">Delete</a>
+                <a href="${deleteLink}"
+                   onclick="if (!(confirm('Are you sure you want to delete this Reader?'))) return false"
+                >Delete</a>
             </td>
         </tr>
 
     </c:forEach>
     </table>
-    <script type="text/javascript" src="/resources/js/encoder-decoder.js"></script>
 </body>
 </html>

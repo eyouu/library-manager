@@ -51,4 +51,11 @@ public class ReaderController {
 
         return "reader-save-form";
     }
+
+    @GetMapping("/deleteReader")
+    public String deleteReader(@RequestParam("readerId") Long id) {
+        readerService.deleteReader(id);
+
+        return "redirect:/reader/list";
+    }
 }

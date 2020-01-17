@@ -9,8 +9,8 @@ public class RentInfo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "rent_id")
+    private Long rentId;
 
     // rent by
     @ManyToOne
@@ -31,12 +31,12 @@ public class RentInfo {
     @Column(name = "date_of_rent")
     private Date dateOfRent;
 
-    public Long getId() {
-        return id;
+    public Long getRentId() {
+        return rentId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setRentId(Long rentId) {
+        this.rentId = rentId;
     }
 
     public Librarian getLibrarian() {
@@ -74,7 +74,7 @@ public class RentInfo {
     @Override
     public String toString() {
         return "RentInfo{" +
-                "id=" + id +
+                "rentId=" + rentId +
                 ", librarian=" + librarian +
                 ", reader=" + reader +
                 ", book=" + book +

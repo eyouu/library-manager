@@ -8,9 +8,11 @@
 <body>
     <h2>Library Manager</h2>
     <hr>
-    <a href="/librarian/addLibrarianForm">Add Librarian</a>
+    <a href="${pageContext.request.contextPath}/librarian/list">Librarians</a>
     <hr>
-    <a href="/reader/list">Readers</a>
+    <a href="${pageContext.request.contextPath}/reader/list">Readers</a>
+    <hr>
+    <a href="${pageContext.request.contextPath}/book/list">Books</a>
     <hr>
 </body>
 </html>

@@ -56,6 +56,5 @@
         <input type="submit" value="Save" />
     </form:form>
 </div>
-<script type="text/javascript" src="/resources/js/encoder-decoder.js"></script>
 </body>
 </html>

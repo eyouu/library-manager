@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/librarian")
@@ -15,6 +16,16 @@ public class LibrarianController {
 
     @Autowired
     private LibrarianService librarianService;
+
+
+    @GetMapping("/list")
+    public String showLibrarians(Model model) {
+        List<Librarian> librarians = librarianService.getLibrarians();
+
+        model.addAttribute("librarians", librarians);
+
+        return "librarians-list";
+    }
 
 
     @GetMapping("/addLibrarianForm")
@@ -33,7 +44,23 @@ public class LibrarianController {
 
         librarianService.saveLibrarian(librarian);
 
-        return "redirect:/";
+        return "redirect:/librarian/list";
+    }
+
+    @GetMapping("/updateLibrarian")
+    public String updateLibrarian(@RequestParam("librarianId") Long id, Model model) {
+        Librarian librarian = librarianService.getLibrarian(id);
+
+        model.addAttribute("librarian", librarian);
+
+        return "librarian-save-form";
+    }
+
+    @GetMapping("/deleteLibrarian")
+    public String deleteLibrarian(@RequestParam("librarianId") Long id) {
+        librarianService.deleteLibrarian(id);
+
+        return "redirect:/librarian/list";
     }
 
 

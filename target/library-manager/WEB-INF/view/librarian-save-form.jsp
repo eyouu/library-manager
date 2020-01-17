@@ -1,6 +1,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8"%>
+
 
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
 
 <body>
     <div>
-        <form:form action="/librarian/saveLibrarian" acceptCharset="UTF-8" modelAttribute="librarian" method="post">
+        <form:form action="/librarian/saveLibrarian" modelAttribute="librarian" method="post">
 
 
             <table>
