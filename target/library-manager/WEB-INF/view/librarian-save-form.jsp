@@ -1,21 +1,25 @@
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 
 <!DOCTYPE html>
 
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Librarian Save Form</title>
 </head>
 
 <body>
     <div>
-        <form:form action="/librarian/saveLibrarian" modelAttribute="librarian" method="post">
+        <form:form action="/librarian/saveLibrarian" acceptCharset="UTF-8" modelAttribute="librarian" method="post">
+
+
             <table>
                 <tbody>
                     <tr>
                         <td>First Name:</td>
-                        <td><form:input path="firstName" /></td>
+                        <td><form:input path="firstName"/></td>
                     </tr>
 
                     <tr>
@@ -24,28 +28,26 @@
                     </tr>
 
                     <tr>
-                        <td>Email:</td>
-                        <td><form:input path="librarianDetail.email"/></td>
+                        <td>Phone:</td>
+                        <td><form:input path="phone"/></td>
                     </tr>
 
                     <tr>
                         <td>Address:</td>
-                        <td><form:input path="librarianDetail.address"/></td>
+                        <td><form:input path="address" /></td>
                     </tr>
 
+                    <tr>
+                        <td>Email:</td>
+                        <td><form:input path="email" /></td>
+                    </tr>
                     <tr>
                         <td>Date of Birth:</td>
-                        <td><form:input path="librarianDetail.dateOfBirth"/></td>
+                        <td><form:input path="dateOfBirth"/></td>
                     </tr>
-
-                    <tr>
-                        <td>Phone:</td>
-                        <td><form:input path="librarianDetail.phone" /></td>
-                    </tr>
-
                     <tr>
                         <td>Gender:</td>
-                        <td><form:input path="librarianDetail.gender" /></td>
+                        <td><form:input path="gender" /></td>
                     </tr>
                 </tbody>
             </table>

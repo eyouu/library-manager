@@ -1,6 +1,7 @@
 package org.project.library.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,9 +19,24 @@ public class Librarian {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "librarian_detail_id")
-    private LibrarianDetail librarianDetail;
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "date_of_birth")
+    private String dateOfBirth;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "registration_date")
+    private Date registrationDate;
 
     @OneToMany(mappedBy = "librarian", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<RentInfo> rentInfo;
@@ -52,12 +68,52 @@ public class Librarian {
         this.lastName = lastName;
     }
 
-    public LibrarianDetail getLibrarianDetail() {
-        return librarianDetail;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setLibrarianDetail(LibrarianDetail librarianDetail) {
-        this.librarianDetail = librarianDetail;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     public List<RentInfo> getRentInfo() {
@@ -74,7 +130,12 @@ public class Librarian {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", librarianDetail=" + librarianDetail +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", gender='" + gender + '\'' +
+                ", registrationDate=" + registrationDate +
                 ", rentInfo=" + rentInfo +
                 '}';
     }

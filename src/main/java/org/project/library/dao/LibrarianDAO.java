@@ -1,7 +1,6 @@
 package org.project.library.dao;
 
 import org.project.library.entity.Librarian;
-import org.project.library.entity.LibrarianDetail;
 
 import java.util.List;
 

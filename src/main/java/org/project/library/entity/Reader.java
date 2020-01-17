@@ -3,7 +3,6 @@ package org.project.library.entity;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "reader")
@@ -29,12 +28,16 @@ public class Reader {
     @Column(name = "email")
     private String email;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     @Column(name = "gender")
     private String gender;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "registration_date")
+    private Date registrationDate;
+
 
     @OneToMany(mappedBy = "reader", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<RentInfo> rentInfo;
@@ -90,11 +93,11 @@ public class Reader {
         this.email = email;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -104,6 +107,14 @@ public class Reader {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     public List<RentInfo> getRentInfo() {
@@ -123,8 +134,9 @@ public class Reader {
                 ", rating=" + rating +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
+                ", registrationDate=" + registrationDate +
                 ", rentInfo=" + rentInfo +
                 '}';
     }
