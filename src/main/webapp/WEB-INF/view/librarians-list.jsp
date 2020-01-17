@@ -52,6 +52,8 @@
             </tr>
             </c:forEach>
         </table>
+        <br>
+        <a href="${pageContext.request.contextPath}/">Back</a>
     </div>
 </body>
 </html>

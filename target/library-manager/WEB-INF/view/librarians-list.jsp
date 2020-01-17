@@ -46,12 +46,14 @@
                 <td>
                     <a href="${updateLing}">Update</a> |
                     <a href="${deleteLing}"
-                        onclick="if (!(confirm('Are you sure you want to delete this librarian?'))) return false"
+                        onclick="if (!(confirm('Are you sure you want to delete this Librarian?'))) return false"
                     >Delete</a>
                 </td>
             </tr>
             </c:forEach>
         </table>
+        <br>
+        <a href="${pageContext.request.contextPath}/">Back</a>
     </div>
 </body>
 </html>

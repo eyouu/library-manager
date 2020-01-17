@@ -8,6 +8,8 @@
 <body>
     <h2>Library Manager</h2>
     <hr>
+    <a href="${pageContext.request.contextPath}/rent/list">Rent List</a>
+    <hr>
     <a href="${pageContext.request.contextPath}/librarian/list">Librarians</a>
     <hr>
     <a href="${pageContext.request.contextPath}/reader/list">Readers</a>

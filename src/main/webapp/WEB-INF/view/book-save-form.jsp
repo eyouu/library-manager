@@ -48,6 +48,7 @@
             <input type="submit" value="Save" />
         </form:form>
     </div>
+    <a href="${pageContext.request.contextPath}/book/list">Back</a>
 </body>
 
 </html>

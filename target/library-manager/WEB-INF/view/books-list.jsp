@@ -14,7 +14,7 @@
 
         <table border="1">
             <tr>
-                <th>#Id</th>
+                <th>Id</th>
                 <th>Author</th>
                 <th>Title</th>
                 <th>Genre</th>
@@ -52,6 +52,7 @@
             </tr>
             </c:forEach>
         </table>
-
+        <br>
+        <a href="${pageContext.request.contextPath}/">Back</a>
     </body>
 </html>

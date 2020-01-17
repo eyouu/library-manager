@@ -17,6 +17,7 @@
     <br>
     <table border="1">
         <tr>
+            <th>Id</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Rating</th>
@@ -39,6 +40,7 @@
         </c:url>
 
         <tr>
+            <td>${tempReader.id}</td>
             <td>${tempReader.firstName}</td>
             <td>${tempReader.lastName}</td>
             <td>${tempReader.rating}</td>
@@ -58,5 +60,7 @@
 
     </c:forEach>
     </table>
+    <br>
+    <a href="${pageContext.request.contextPath}/">Back</a>
 </body>
 </html>

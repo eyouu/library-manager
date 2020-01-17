@@ -2,6 +2,7 @@ package org.project.library.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "rent_info")
@@ -11,6 +12,9 @@ public class RentInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rent_id")
     private Long rentId;
+
+    @Column(name = "status")
+    private String status;
 
     // rent by
     @ManyToOne
@@ -37,6 +41,14 @@ public class RentInfo {
 
     public void setRentId(Long rentId) {
         this.rentId = rentId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Librarian getLibrarian() {
@@ -75,6 +87,7 @@ public class RentInfo {
     public String toString() {
         return "RentInfo{" +
                 "rentId=" + rentId +
+                ", status='" + status + '\'' +
                 ", librarian=" + librarian +
                 ", reader=" + reader +
                 ", book=" + book +

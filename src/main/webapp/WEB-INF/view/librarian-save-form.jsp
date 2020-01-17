@@ -55,5 +55,7 @@
                 <input type="submit" value="Save" />
         </form:form>
     </div>
+    <br>
+    <a href="${pageContext.request.contextPath}/librarian/list">Back</a>
 </body>
 </html>
