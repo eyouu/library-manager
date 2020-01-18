@@ -17,17 +17,17 @@ public class RentInfo {
     private String status;
 
     // rent by
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "librarian_id")
     private Librarian librarian;
 
     // to whom
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reader_id")
     private Reader reader;
 
     // book id
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
     private Book book;
 

@@ -6,57 +6,65 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Reader Save Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Reader Save Form</title>
 </head>
 
 <body>
-<div>
-    <form:form action="/reader/saveReader"  modelAttribute="reader" method="post">
-        <form:hidden path="id" />
+    <div class="container">
+        <form:form action="/reader/saveReader"  modelAttribute="reader" method="post">
+            <form:hidden path="id" />
 
-        <table>
-            <tbody>
-            <tr>
-                <td>First Name:</td>
-                <td><form:input path="firstName"/></td>
-            </tr>
+                <h2>Save New Reader</h2>
+                <hr>
 
-            <tr>
-                <td>Last name:</td>
-                <td><form:input path="lastName" /></td>
-            </tr>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="First Name" path="firstName"/>
+                </div>
 
-            <tr>
-                <td>Rating:</td>
-                <td><form:input path="rating"/></td>
-            </tr>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Last Name" path="lastName"/>
+                </div>
 
-            <tr>
-                <td>Phone:</td>
-                <td><form:input path="phone" /></td>
-            </tr>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Rating" path="rating"/>
+                </div>
 
-            <tr>
-                <td>Email:</td>
-                <td><form:input path="email" /></td>
-            </tr>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Phone" path="phone"/>
+                </div>
 
-            <tr>
-                <td>Date of Birth:</td>
-                <td><form:input path="dateOfBirth" /></td>
-            </tr>
-            <tr>
-                <td>Gender:</td>
-                <td><form:input path="gender" /></td>
-            </tr>
-            </tbody>
-        </table>
+                <div class="form-group">
+                    <label>Email</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Email" path="email"/>
+                </div>
 
-        <input type="submit" value="Save" />
-    </form:form>
-    <br>
-    <a href="${pageContext.request.contextPath}/reader/list">Back</a>
-</div>
+                <div class="form-group">
+                    <label>Date Of Birth</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Date of Birth" path="dateOfBirth"/>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <form:select cssClass="form-control mb-4 col-4" path="gender" >
+                        <form:option value="Male" >Male</form:option>
+                        <form:option value="Female">Female</form:option>
+                        <form:option value="Other">Other</form:option>
+                    </form:select>
+                </div>
+
+                <div>
+                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/reader/list">Back</a>
+                    <input class="btn btn-primary col-2" type="submit" value="Save" />
+                </div>
+
+        </form:form>
+
+    </div>
 </body>
 </html>

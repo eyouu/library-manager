@@ -38,7 +38,7 @@ public class Librarian {
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    @OneToMany(mappedBy = "librarian", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @OneToMany(mappedBy = "librarian", cascade = CascadeType.ALL)
     private List<RentInfo> rentInfo;
 
     public Librarian() {

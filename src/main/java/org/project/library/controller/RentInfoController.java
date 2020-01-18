@@ -1,6 +1,8 @@
 package org.project.library.controller;
 
+import org.project.library.entity.Librarian;
 import org.project.library.entity.RentInfo;
+import org.project.library.service.LibrarianService;
 import org.project.library.service.RentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +20,15 @@ public class RentInfoController {
     @Autowired
     private RentInfoService rentInfoService;
 
+    @Autowired
+    private LibrarianService librarianService;
+
     @GetMapping("/list")
     public String showRents(Model model) {
 
         List<RentInfo> rents = rentInfoService.getRentList();
         model.addAttribute("rents", rents);
+
 
         return "rents-list";
     }
@@ -32,6 +38,9 @@ public class RentInfoController {
         RentInfo rentInfo = new RentInfo();
 
         model.addAttribute("rentInfo", rentInfo);
+
+        List<Librarian> librarians = librarianService.getLibrarians();
+        model.addAttribute("librarians", librarians);
 
         return "rent-save-form";
     }
@@ -63,12 +72,6 @@ public class RentInfoController {
 
 
 
-    public void populateDefaultModel(Model model) {
-        List<String> statuses = new ArrayList<>();
-        statuses.add("IN RENT");
-        statuses.add("RETURNED");
-        model.addAttribute("statusess", statuses);
-    }
 
 
 
