@@ -16,49 +16,38 @@
 </head>
 
 <body>
-<div class="container">
-    <form:form action="/rent/saveRent"  modelAttribute="rentInfo" method="post">
-        <form:hidden path="rentId" />
+    <div class="container">
+        <form:form action="/rent/saveRent"  modelAttribute="rentInfo" method="post">
+            <form:hidden path="rentId" />
 
-                <h2>Save New Rent</h2>
-                <hr>
+                    <h2>Save New Rent</h2>
+                    <hr>
 
-                <div class="form-group">
-                    <label>Status</label>
-                    <form:select id="brow" cssClass="form-control mb-4 col-4" path="status" >
-                        <form:option value="NONE">SELECT</form:option>
-                        <form:option value="IN RENT" label="IN RENT"  />
-                        <form:option value="RETURNED" label="RETURNED"  />
-                    </form:select>
-                </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <form:select id="brow" cssClass="form-control mb-4 col-4" path="status" >
+                            <form:option value="IN RENT" label="IN RENT"  />
+                            <form:option value="RETURNED" label="RETURNED"  />
+                        </form:select>
+                    </div>
 
-                <div class="form-group">
-                    <label>Librarian ID</label>
-                    <form:select cssClass="form-control mb-4 col-4"  path="librarian.id">
-                            <form:option value="NONE">SELECT</form:option>
-                        <c:forEach var="temp" items="${librarians}">
-                            <form:option value="${temp.id}" />
-                        </c:forEach>
-                    </form:select>
-                </div>
+                    <div class="form-group">
+                        <label>Reader id:</label>
+                        <form:input cssClass="form-control mb-4 col-4" path="reader.id"/>
+                    </div>
 
-                <div class="form-group">
-                    <label>Reader id:</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="reader.id"/>
-                </div>
+                    <div class="form-group">
+                        <label>Book id</label>
+                        <form:input cssClass="form-control mb-4 col-4" path="book.id" />
+                    </div>
 
-                <div class="form-group">
-                    <label>Book id</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="book.id" />
-                </div>
+                    <div>
+                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/rent/list">Back</a>
+                        <input class="btn btn-primary col-2" type="submit" value="Save" />
+                    </div>
+        </form:form>
 
-                <div>
-                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/rent/list">Back</a>
-                    <input class="btn btn-primary col-2" type="submit" value="Save" />
-                </div>
-    </form:form>
-
-</div>
+    </div>
 
 </body>
 

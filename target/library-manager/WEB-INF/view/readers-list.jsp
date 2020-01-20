@@ -62,8 +62,8 @@
                                 <td>${tempReader.gender}</td>
                                 <td>${tempReader.registrationDate}</td>
                                 <td>
-                                    <a class="btn  btn-outline-success btn-sm" href="${updateLing}">Update</a>
-                                    <a class="btn btn-outline-danger btn-sm" href="${deleteLink}"
+                                    <a class="btn  btn-success btn-sm" href="${updateLing}">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="${deleteLink}"
                                        onclick="if (!(confirm('Are you sure you want to delete this Reader?'))) return false"
                                     >Delete</a>
                                 </td>

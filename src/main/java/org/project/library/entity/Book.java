@@ -30,7 +30,7 @@ public class Book {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RentInfo> rentInfo;
 
     public Book() {

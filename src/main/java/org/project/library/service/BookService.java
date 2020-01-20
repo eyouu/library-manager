@@ -13,4 +13,6 @@ public interface BookService {
     void saveBook(Book book);
 
     void deleteBook(Long id);
+
+    Book rentBook(Long id);
 }

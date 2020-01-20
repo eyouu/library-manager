@@ -44,6 +44,11 @@
                             <c:param name="bookId" value="${tempBook.id}" />
                         </c:url>
 
+                        <c:url var="rentLink" value="/book/rentBook">
+                            <c:param name="bookId" value="${tempBook.id}"/>
+                        </c:url>
+
+
                     <tr>
                         <td>${tempBook.id}</td>
                         <td>${tempBook.author}</td>
@@ -53,11 +58,12 @@
                         <td>${tempBook.publicationDate}</td>
                         <td>${tempBook.quantity}</td>
                         <td>
-                            <a class="btn  btn-outline-success btn-sm" href="${updateLink}">Update</a>
-
-                            <a class="btn  btn-outline-danger btn-sm" href="${deleteLink}"
+                            <a class="btn  btn-warning btn-sm" href="${rentLink}">Rent Book</a>
+                            <a class="btn  btn-success btn-sm" href="${updateLink}">Update</a>
+                            <a class="btn  btn-danger btn-sm" href="${deleteLink}"
                                onclick="if (!(confirm('Are you sure you want to delete this book?'))) return false"
                             >Delete</a>
+
                         </td>
                     </tr>
 

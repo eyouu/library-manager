@@ -2,7 +2,6 @@ package org.project.library.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "rent_info")
@@ -16,18 +15,13 @@ public class RentInfo {
     @Column(name = "status")
     private String status;
 
-    // rent by
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "librarian_id")
-    private Librarian librarian;
-
     // to whom
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "reader_id")
     private Reader reader;
 
     // book id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "book_id")
     private Book book;
 
@@ -49,14 +43,6 @@ public class RentInfo {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Librarian getLibrarian() {
-        return librarian;
-    }
-
-    public void setLibrarian(Librarian librarian) {
-        this.librarian = librarian;
     }
 
     public Reader getReader() {
@@ -88,7 +74,6 @@ public class RentInfo {
         return "RentInfo{" +
                 "rentId=" + rentId +
                 ", status='" + status + '\'' +
-                ", librarian=" + librarian +
                 ", reader=" + reader +
                 ", book=" + book +
                 ", dateOfRent=" + dateOfRent +

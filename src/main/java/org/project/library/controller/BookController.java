@@ -1,12 +1,15 @@
 package org.project.library.controller;
 
 import org.project.library.entity.Book;
+import org.project.library.entity.RentInfo;
 import org.project.library.service.BookService;
+import org.project.library.service.RentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -15,6 +18,9 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private RentInfoService rentInfoService;
 
     @GetMapping("/list")
     public String showBooks(Model model) {
@@ -56,5 +62,28 @@ public class BookController {
 
         return "redirect:/book/list";
     }
+
+    @GetMapping("/rentBook")
+    public String rentBook(@RequestParam("bookId") Long id, Model model) {
+        Book book = bookService.rentBook(id);
+
+        RentInfo rentInfo = new RentInfo();
+
+        rentInfo.setBook(book);
+        model.addAttribute("rentInfo", rentInfo);
+
+        return "book-rent-form";
+    }
+
+    @PostMapping("/saveBookRent")
+    public String saveBookRent(@ModelAttribute("rentInfo") RentInfo rentInfo) {
+        rentInfo.setDateOfRent(new Date());
+
+        rentInfo.setStatus("IN RENT");
+
+        rentInfoService.saveRent(rentInfo);
+        return "redirect:/book/list";
+    }
+
 
 }

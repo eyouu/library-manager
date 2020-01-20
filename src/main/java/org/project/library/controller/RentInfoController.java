@@ -58,7 +58,7 @@ public class RentInfoController {
     public String updateRent(@RequestParam("rentId") Long id, Model model) {
         RentInfo rent = rentInfoService.getRent(id);
 
-        model.addAttribute("rent", rent);
+        model.addAttribute("rentInfo", rent);
 
         return "rent-save-form";
     }
@@ -70,6 +70,12 @@ public class RentInfoController {
         return "redirect:/rent/list";
     }
 
+    @GetMapping("/changeStatus")
+    public String changeStatus(@RequestParam("statusId") Long id) {
+        rentInfoService.changeRentStatus(id);
+
+        return "redirect:/rent/list";
+    }
 
 
 

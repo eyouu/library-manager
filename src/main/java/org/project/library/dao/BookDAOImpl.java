@@ -44,9 +44,20 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public void deleteBook(Long id) {
         Session session = sessionFactory.getCurrentSession();
-
         Query query = session.createQuery("delete from Book where id=:bookId");
+        session.createQuery("update RentInfo set book.id=null").executeUpdate();
+
         query.setParameter("bookId", id);
         query.executeUpdate();
+    }
+
+    @Override
+    public Book rentBook(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Book book = session.get(Book.class, id);
+
+
+        return book;
     }
 }

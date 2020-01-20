@@ -46,6 +46,8 @@ public class ReaderDAOImpl implements ReaderDAO {
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("delete from Reader where id=:readerId");
+        session.createQuery("update RentInfo set reader.id=null").executeUpdate();
+
         query.setParameter("readerId", id);
         query.executeUpdate();
     }

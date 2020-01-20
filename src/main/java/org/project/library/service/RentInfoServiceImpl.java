@@ -48,12 +48,20 @@ public class RentInfoServiceImpl implements RentInfoService {
     }
 
     @Override
+    @Transactional
     public void deleteRent(Long id) {
         rentInfoDAO.deleteRent(id);
     }
 
     @Override
+    @Transactional
     public RentInfo getRent(Long id) {
         return rentInfoDAO.getRent(id);
+    }
+
+    @Override
+    @Transactional
+    public void changeRentStatus(Long id) {
+        rentInfoDAO.changeRentStatus(id);
     }
 }

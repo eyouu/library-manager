@@ -38,8 +38,7 @@ public class Reader {
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    // CascadeType.PERSIST, CascadeType.MERGE
-    @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "reader", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RentInfo> rentInfo;
 
     public Reader() {

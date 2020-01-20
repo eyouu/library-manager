@@ -21,4 +21,5 @@ public interface RentInfoService {
 
     RentInfo getRent(Long id);
 
+    void changeRentStatus(Long id);
 }

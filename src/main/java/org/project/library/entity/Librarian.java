@@ -38,9 +38,6 @@ public class Librarian {
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    @OneToMany(mappedBy = "librarian", cascade = CascadeType.ALL)
-    private List<RentInfo> rentInfo;
-
     public Librarian() {
     }
 
@@ -116,14 +113,6 @@ public class Librarian {
         this.registrationDate = registrationDate;
     }
 
-    public List<RentInfo> getRentInfo() {
-        return rentInfo;
-    }
-
-    public void setRentInfo(List<RentInfo> rentInfo) {
-        this.rentInfo = rentInfo;
-    }
-
     @Override
     public String toString() {
         return "Librarian{" +
@@ -136,7 +125,6 @@ public class Librarian {
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
                 ", registrationDate=" + registrationDate +
-                ", rentInfo=" + rentInfo +
                 '}';
     }
 }
