@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,7 +30,6 @@ public class LibrarianController {
     @GetMapping("/addLibrarianForm")
     public String addLibrarianForm(Model model) {
         Librarian librarian = new Librarian();
-
         model.addAttribute("librarian", librarian);
 
         return "librarian-save-form";
@@ -40,9 +38,9 @@ public class LibrarianController {
 
     @PostMapping("/saveLibrarian")
     public String saveLibrarian(@ModelAttribute("librarian") Librarian librarian ) {
-        librarian.setRegistrationDate(new Date());
 
         librarianService.saveLibrarian(librarian);
+
 
         return "redirect:/librarian/list";
     }

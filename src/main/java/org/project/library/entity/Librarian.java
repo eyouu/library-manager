@@ -1,8 +1,7 @@
 package org.project.library.entity;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+
 
 @Entity
 @Table(name = "librarian")
@@ -34,9 +33,8 @@ public class Librarian {
     @Column(name = "gender")
     private String gender;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "registration_date")
-    private Date registrationDate;
+    private String registrationDate;
 
     public Librarian() {
     }
@@ -105,11 +103,11 @@ public class Librarian {
         this.gender = gender;
     }
 
-    public Date getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
 

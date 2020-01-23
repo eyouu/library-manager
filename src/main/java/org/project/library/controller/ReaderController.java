@@ -37,7 +37,6 @@ public class ReaderController {
 
     @PostMapping("/saveReader")
     public String saveReader(@ModelAttribute("reader") Reader reader) {
-        reader.setRegistrationDate(new Date());
 
         readerService.saveReader(reader);
         return "redirect:/reader/list";

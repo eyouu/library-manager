@@ -32,12 +32,23 @@
 
                 <div class="form-group">
                     <label>Rating</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="Rating" path="rating"/>
+                    <form:select cssClass="form-control mb-4 col-4" path="rating" >
+                        <form:option value="1" >1</form:option>
+                        <form:option value="2">2</form:option>
+                        <form:option value="3">3</form:option>
+                        <form:option value="4">4</form:option>
+                        <form:option value="5">5</form:option>
+                        <form:option value="6">6</form:option>
+                        <form:option value="7">7</form:option>
+                        <form:option value="8">8</form:option>
+                        <form:option value="9">9</form:option>
+                        <form:option value="10">10</form:option>
+                    </form:select>
                 </div>
 
                 <div class="form-group">
                     <label>Phone</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="Phone" path="phone"/>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="+38-(000)-00-00-000" path="phone"/>
                 </div>
 
                 <div class="form-group">
@@ -47,7 +58,7 @@
 
                 <div class="form-group">
                     <label>Date Of Birth</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="Date of Birth" path="dateOfBirth"/>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="dd-mm-yyyy" path="dateOfBirth"/>
                 </div>
                 <div class="form-group">
                     <label>Gender</label>
@@ -56,6 +67,11 @@
                         <form:option value="Female">Female</form:option>
                         <form:option value="Other">Other</form:option>
                     </form:select>
+                </div>
+
+                <div class="form-group">
+                    <label>Registration Date</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="dd-mm-yyyy" path="registrationDate" />
                 </div>
 
                 <div>

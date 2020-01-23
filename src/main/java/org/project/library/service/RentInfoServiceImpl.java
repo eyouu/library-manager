@@ -1,9 +1,6 @@
 package org.project.library.service;
 
 import org.project.library.dao.RentInfoDAO;
-import org.project.library.entity.Book;
-import org.project.library.entity.Librarian;
-import org.project.library.entity.Reader;
 import org.project.library.entity.RentInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,28 +14,11 @@ public class RentInfoServiceImpl implements RentInfoService {
     @Autowired
     private RentInfoDAO rentInfoDAO;
 
+
     @Override
     @Transactional
     public List<RentInfo> getRentList() {
         return rentInfoDAO.getRentList();
-    }
-
-    @Override
-    @Transactional
-    public List<RentInfo> getRentsByReaderId(Long id) {
-        return rentInfoDAO.getRentsByReaderId(id);
-    }
-
-    @Override
-    @Transactional
-    public List<RentInfo> getRentsGivenByLibrarianId(Long id) {
-        return rentInfoDAO.getRentsGivenByLibrarianId(id);
-    }
-
-    @Override
-    @Transactional
-    public List<Book> getRentedBooks() {
-        return rentInfoDAO.getRentedBooks();
     }
 
     @Override
@@ -63,5 +43,35 @@ public class RentInfoServiceImpl implements RentInfoService {
     @Transactional
     public void changeRentStatus(Long id) {
         rentInfoDAO.changeRentStatus(id);
+    }
+
+    @Override
+    @Transactional
+    public List<RentInfo> getRentedBooks() {
+        return rentInfoDAO.getRentedBooks();
+    }
+
+    @Override
+    @Transactional
+    public List<RentInfo> getReturnedBooks() {
+        return rentInfoDAO.getReturnedBooks();
+    }
+
+    @Override
+    @Transactional
+    public List<RentInfo> searchRentByReaderId(Long readerId) {
+        return rentInfoDAO.searchRentByReaderId(readerId);
+    }
+
+    @Override
+    @Transactional
+    public List<RentInfo> searchRentByBookId(Long bookId) {
+        return rentInfoDAO.searchRentByBookId(bookId);
+    }
+
+    @Override
+    @Transactional
+    public List<RentInfo> searchRentByRentId(Long rentId) {
+        return rentInfoDAO.searchRentByRentId(rentId);
     }
 }

@@ -1,7 +1,6 @@
 package org.project.library.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -34,9 +33,8 @@ public class Reader {
     @Column(name = "gender")
     private String gender;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "registration_date")
-    private Date registrationDate;
+    private String registrationDate;
 
     @OneToMany(mappedBy = "reader", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RentInfo> rentInfo;
@@ -108,11 +106,11 @@ public class Reader {
         this.gender = gender;
     }
 
-    public Date getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
 

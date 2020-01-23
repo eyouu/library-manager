@@ -24,32 +24,32 @@
 
                 <div class="form-group">
                     <label>Author</label>
-                    <form:input  cssClass="form-control mb-4 col-4" path="author" />
+                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Author" path="author" />
                 </div>
 
                 <div class="form-group">
                     <label>Title</label></td>
-                    <form:input  cssClass="form-control mb-4 col-4" path="title" />
+                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Title" path="title" />
                 </div class="form-group">
 
                 <div class="form-group">
                     <label>Genre</label>
-                    <form:input  cssClass="form-control mb-4 col-4" path="genre" />
+                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Genre" path="genre" />
                 </div class="form-group">
 
                 <div class="form-group">
                     <label>Country</label>
-                    <form:input  cssClass="form-control mb-4 col-4" path="country" />
+                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Country" path="country" />
                 </div class="form-group">
 
                 <div class="form-group">
                     <label>Publication Date</label>
-                    <form:input  cssClass="form-control mb-4 col-4" path="publicationDate" />
+                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Publication Date" path="publicationDate" />
                 </div class="form-group">
 
                 <div class="form-group">
                     <label>Quantity</label>
-                    <form:input  cssClass="form-control mb-4 col-4" path="quantity" />
+                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Quantity" path="quantity" />
                 </div>
 
                 <div>

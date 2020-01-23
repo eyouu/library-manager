@@ -9,12 +9,6 @@ public interface RentInfoDAO {
 
     List<RentInfo> getRentList();
 
-    List<RentInfo> getRentsByReaderId(Long id);
-
-    List<RentInfo> getRentsGivenByLibrarianId(Long id);
-
-    List<Book> getRentedBooks();
-
     void saveRent(RentInfo rentInfo);
 
     void deleteRent(Long id);
@@ -22,4 +16,14 @@ public interface RentInfoDAO {
     RentInfo getRent(Long id);
 
     void changeRentStatus(Long id);
+
+    List<RentInfo> getRentedBooks();
+
+    List<RentInfo> getReturnedBooks();
+
+    List<RentInfo> searchRentByReaderId(Long readerId);
+
+    List<RentInfo> searchRentByBookId(Long bookId);
+
+    List<RentInfo> searchRentByRentId(Long rentId);
 }

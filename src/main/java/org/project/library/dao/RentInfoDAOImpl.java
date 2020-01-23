@@ -20,45 +20,12 @@ public class RentInfoDAOImpl implements RentInfoDAO {
     public List<RentInfo> getRentList() {
         Session session = sessionFactory.getCurrentSession();
 
-        Query<RentInfo> query = session.createQuery("from RentInfo", RentInfo.class);
+        Query<RentInfo> query = session.createQuery("from RentInfo order by dateOfRent desc", RentInfo.class);
         List<RentInfo> rents = query.getResultList();
 
         return rents;
     }
 
-    @Override
-    public List<RentInfo> getRentsByReaderId(Long id) {
-        Session session = sessionFactory.getCurrentSession();
-
-        Query<RentInfo> query = session.createQuery("from RentInfo where reader.id=:readerId", RentInfo.class);
-        query.setParameter("readerId", id).getResultList();
-
-        List<RentInfo> rents = query.getResultList();
-
-        return rents;
-    }
-
-    @Override
-    public List<RentInfo> getRentsGivenByLibrarianId(Long id) {
-        Session session = sessionFactory.getCurrentSession();
-
-        Query<RentInfo> query = session.createQuery("from RentInfo where librarian.id=:librarianId", RentInfo.class);
-        query.setParameter("librarianId", id);
-
-        List<RentInfo> rents = query.getResultList();
-
-        return rents;
-    }
-
-    @Override
-    public List<Book> getRentedBooks() {
-        Session session = sessionFactory.getCurrentSession();
-
-        Query<Book> query = session.createQuery("select Book from RentInfo where book.id=Book.id", Book.class);
-        List<Book> books = query.getResultList();
-
-        return books;
-    }
 
     @Override
     public void saveRent(RentInfo rentInfo) {
@@ -123,4 +90,63 @@ public class RentInfoDAOImpl implements RentInfoDAO {
             rentInfo.setStatus(rentStatus);
         }
     }
+
+    @Override
+    public List<RentInfo> getRentedBooks() {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<RentInfo> query = session.createQuery("from RentInfo where status='IN RENT'", RentInfo.class);
+        List<RentInfo> books = query.getResultList();
+
+        return books;
+    }
+
+    @Override
+    public List<RentInfo> getReturnedBooks() {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<RentInfo> query = session.createQuery("from RentInfo where status='RETURNED'", RentInfo.class);
+        List<RentInfo> books = query.getResultList();
+
+        return books;
+    }
+
+
+
+    @Override
+    public List<RentInfo> searchRentByReaderId(Long readerId) {
+        Session session = sessionFactory.getCurrentSession();
+
+            Query<RentInfo> query = session.createQuery("from RentInfo where reader.id=:readerId", RentInfo.class);
+            query.setParameter("readerId", readerId);
+
+            List<RentInfo> rents = query.getResultList();
+
+        return rents;
+    }
+
+    @Override
+    public List<RentInfo> searchRentByBookId(Long bookId) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<RentInfo> query = session.createQuery("from RentInfo where book.id=:bookId", RentInfo.class);
+        query.setParameter("bookId", bookId);
+
+        List<RentInfo> rents = query.getResultList();
+
+        return rents;
+    }
+
+    @Override
+    public List<RentInfo> searchRentByRentId(Long rentId) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<RentInfo> query = session.createQuery("from RentInfo where rentId=:rentId", RentInfo.class);
+        query.setParameter("rentId", rentId);
+
+        List<RentInfo> rents = query.getResultList();
+        return rents;
+    }
+
+
 }

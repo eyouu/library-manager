@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,26 +13,44 @@
 </head>
 
 <body>
+
     <div class="container">
+        <br>
         <h2>Rent List</h2>
         <br>
+
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/rent/list">Show All</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/rent/showBooksInRent">Books In Rent</a>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/rent/showReturnedBooks">Returned Books</a>
         <hr>
 
-        <table class="table table-striped table-bordered">
+        <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>Rent ID</th>
-                    <th>Status</th>
-                    <th>Reader ID</th>
-                    <th>Book ID</th>
-                    <th>Date of Rent</th>
-                    <th>Action</th>
+                    <th style="width: 13%">
+                        <form:form  action="searchByRentId" method="get">
+                            <input class="form-control" placeholder="Rent ID" type="text" name="rentId">
+                        </form:form>
+                    </th>
+                    <th  style="text-align: center; width: 20%">Status</th>
+                    <th style="width: 13%">
+                        <form:form  action="searchByReaderId" method="get">
+                            <input class="form-control" placeholder="Reader ID" type="text" name="readerId">
+                        </form:form>
+                    </th>
+
+                    <th style="width: 13%">
+                        <form:form  action="searchByBookId" method="get">
+                            <input class="form-control" placeholder="Book ID" type="text" name="bookId">
+                        </form:form>
+                    </th>
+                    <th style="text-align: center; width: 20%">Date of Rent</th>
+                    <th style="text-align: center">Action</th>
                 </tr>
             </thead>
 
             <tbody>
                 <c:forEach var="tempRents" items="${rents}">
-
 
                     <c:url var="deleteLink" value="/rent/deleteRent" >
                         <c:param name="rentId" value="${tempRents.rentId}"/>
@@ -42,18 +61,24 @@
                     </c:url>
 
                 <tr>
-                    <td>${tempRents.rentId}</td>
-                    <td>${tempRents.status}</td>
-                    <td>${tempRents.reader.id}</td>
-                    <td>${tempRents.book.id}</td>
-                    <td>${tempRents.dateOfRent}</td>
-                    <td>
-                        <a  class="btn btn-warning btn-sm" href="${changeStatusLink}"
-                        >Change Status</a>
-                        <a class="btn btn-danger btn-sm" href="${deleteLink}"
-                           onclick="if (!(confirm('Are you sure you want to delete this rent info?'))) return false"
-                        >Delete</a>
-                    </td>
+                        <td style="text-align: center">${tempRents.rentId}</td>
+                    <c:if test="${tempRents.status.equals('IN RENT')}" >
+                        <td style="color:red; text-align: center">${tempRents.status}</td>
+                    </c:if>
+                    <c:if test="${tempRents.status.equals('RETURNED')}" >
+                        <td style="color:black ;text-align: center">${tempRents.status}</td>
+                    </c:if>
+                        <td style="text-align: center">${tempRents.reader.id}</td>
+                        <td style="text-align: center">${tempRents.book.id}</td>
+                        <td style="text-align: center">${tempRents.dateOfRent}</td>
+                        <td>
+                            <a  class="btn btn-warning btn-sm" href="${changeStatusLink}"
+                                onclick="if (!(confirm('Are you sure you want to change rent status?'))) return false"
+                            >Change Status</a>
+                            <a class="btn btn-danger btn-sm" href="${deleteLink}"
+                               onclick="if (!(confirm('Are you sure you want to delete this rent info?'))) return false"
+                            >Delete</a>
+                        </td>
                 </c:forEach>
                 </tr>
             </tbody>

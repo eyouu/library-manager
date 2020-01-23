@@ -23,38 +23,47 @@
 
                 <div class="form-group">
                     <label>First Name</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="firstName"/>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="First Name" path="firstName"/>
                 </div>
 
                 <div class="form-group">
                     <label>Last name</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="lastName" />
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Last Name" path="lastName" />
                 </div>
 
                 <div class="form-group">
                     <label>Phone</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="phone"/>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="+38-(000)-00-00-000" path="phone"/>
                 </div>
 
 
                 <div class="form-group">
                     <label>Address</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="address" />
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Street, building, flat" path="address" />
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="email" />
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="Email" path="email" />
                 </div>
 
                 <div class="form-group">
                     <label>Date of Birth</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="dateOfBirth"/>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="dd-mm--yyyy" path="dateOfBirth"/>
                 </div>
 
                 <div class="form-group">
                     <label>Gender</label>
-                    <form:input cssClass="form-control mb-4 col-4" path="gender" />
+                    <form:select cssClass="form-control mb-4 col-4" path="gender" >
+                        <form:option value="Male" >Male</form:option>
+                        <form:option value="Female">Female</form:option>
+                        <form:option value="Other">Other</form:option>
+                    </form:select>
+                </div>
+
+                <div class="form-group">
+                    <label>Registration Date</label>
+                    <form:input cssClass="form-control mb-4 col-4" placeholder="dd-mm-yyyy" path="registrationDate" />
                 </div>
 
 
