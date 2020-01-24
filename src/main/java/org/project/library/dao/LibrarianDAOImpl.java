@@ -51,4 +51,16 @@ public class LibrarianDAOImpl implements LibrarianDAO {
         query.executeUpdate();
     }
 
+    @Override
+    public List<Librarian> searchLibrarian(String librarianName) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<Librarian> query = session.createQuery("from Librarian where lower(firstName) like :theName" +
+                " or lower(lastName) like :theName", Librarian.class);
+        query.setParameter("theName", "%" + librarianName.toLowerCase() + "%");
+
+        List<Librarian> foundLibrarians = query.getResultList();
+        return foundLibrarians;
+    }
+
 }

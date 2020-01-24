@@ -1,6 +1,7 @@
 package org.project.library.controller;
 
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 import org.project.library.entity.RentInfo;
 import org.project.library.service.BookService;
 import org.project.library.service.RentInfoService;
@@ -65,7 +66,7 @@ public class BookController {
 
     @GetMapping("/rentBook")
     public String rentBook(@RequestParam("bookId") Long id, Model model) {
-        Book book = bookService.rentBook(id);
+        Book book = bookService.getBook(id);
 
         RentInfo rentInfo = new RentInfo();
 
@@ -83,6 +84,15 @@ public class BookController {
 
         rentInfoService.saveRent(rentInfo);
         return "redirect:/book/list";
+    }
+
+    @GetMapping("/searchBook")
+    public String searchReaderByName(@RequestParam("searchBook") String searchBook, Model model) {
+        List<Book> books = bookService.searchBook(searchBook);
+
+        model.addAttribute("books", books);
+
+        return "books-list";
     }
 
 

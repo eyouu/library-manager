@@ -40,7 +40,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public Book rentBook(Long id) {
-        return bookDAO.rentBook(id);
+    public List<Book> searchBook(String searchBook) {
+        return bookDAO.searchBook(searchBook);
     }
+
 }

@@ -10,7 +10,7 @@ public class LibraryController {
     @GetMapping("/")
     public String showMainPage() {
 
-        return "main-page";
+        return "redirect:/book/list";
     }
 
 }

@@ -13,4 +13,6 @@ public interface ReaderDAO {
     void saveReader(Reader reader);
 
     void deleteReader(Long id);
+
+    List<Reader> searchReaderByName(String searchName);
 }

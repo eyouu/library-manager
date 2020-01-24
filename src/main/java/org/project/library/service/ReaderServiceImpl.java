@@ -37,4 +37,10 @@ public class ReaderServiceImpl implements ReaderService {
     public void deleteReader(Long id) {
         readerDAO.deleteReader(id);
     }
+
+    @Override
+    @Transactional
+    public List<Reader> searchReaderByName(String searchName) {
+        return readerDAO.searchReaderByName(searchName);
+    }
 }

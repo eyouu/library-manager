@@ -14,5 +14,5 @@ public interface BookService {
 
     void deleteBook(Long id);
 
-    Book rentBook(Long id);
+    List<Book> searchBook(String searchBook);
 }

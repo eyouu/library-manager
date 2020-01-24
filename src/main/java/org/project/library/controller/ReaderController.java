@@ -57,4 +57,13 @@ public class ReaderController {
 
         return "redirect:/reader/list";
     }
+
+    @GetMapping("/searchByName")
+    public String searchReaderByName(@RequestParam("searchName") String searchName, Model model) {
+        List<Reader> readers = readerService.searchReaderByName(searchName);
+
+        model.addAttribute("readers", readers);
+
+        return "readers-list";
+    }
 }

@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -52,12 +53,15 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public Book rentBook(Long id) {
+    public List<Book> searchBook(String searchBook) {
         Session session = sessionFactory.getCurrentSession();
 
-        Book book = session.get(Book.class, id);
+        Query<Book> query = session.createQuery("from Book where lower(author) like :theName or lower(title) like :theName", Book.class);
+        query.setParameter("theName", "%" + searchBook.toLowerCase() + "%");
 
+        List<Book> foundBooks = query.getResultList();
 
-        return book;
+        return foundBooks;
     }
+
 }

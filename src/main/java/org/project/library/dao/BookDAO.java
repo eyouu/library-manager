@@ -15,5 +15,5 @@ public interface BookDAO {
 
     void deleteBook(Long id);
 
-    Book rentBook(Long id);
+    List<Book> searchBook(String searchBook);
 }

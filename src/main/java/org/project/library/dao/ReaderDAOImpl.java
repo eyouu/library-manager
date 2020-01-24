@@ -51,4 +51,17 @@ public class ReaderDAOImpl implements ReaderDAO {
         query.setParameter("readerId", id);
         query.executeUpdate();
     }
+
+    @Override
+    public List<Reader> searchReaderByName(String searchName) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query<Reader> query = session.createQuery("from Reader where lower(firstName) like :theName" +
+                " or lower(lastName) like :theName", Reader.class);
+        query.setParameter("theName", "%" + searchName.toLowerCase() + "%");
+
+        List<Reader> readers = query.getResultList();
+
+        return readers;
+    }
 }

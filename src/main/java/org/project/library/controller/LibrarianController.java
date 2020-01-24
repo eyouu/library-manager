@@ -1,5 +1,6 @@
 package org.project.library.controller;
 
+import org.project.library.entity.Book;
 import org.project.library.entity.Librarian;
 import org.project.library.service.LibrarianService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,15 @@ public class LibrarianController {
         librarianService.deleteLibrarian(id);
 
         return "redirect:/librarian/list";
+    }
+
+    @GetMapping("/searchLibrarian")
+    public String searchReaderByName(@RequestParam("librarianName") String librarianName, Model model) {
+        List<Librarian> librarians = librarianService.searchLibrarian(librarianName);
+
+        model.addAttribute("librarians", librarians);
+
+        return "librarians-list";
     }
 
 

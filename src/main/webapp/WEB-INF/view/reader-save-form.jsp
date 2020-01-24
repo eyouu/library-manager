@@ -14,6 +14,33 @@
 
 <body>
     <div class="container">
+
+        <div class="navbar-expand{-sm|-md|-lg|-xl}">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">Books</a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="${pageContext.request.contextPath}/librarian/addLibrarianForm">Add Reader</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/librarian/list">Librarians</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="${pageContext.request.contextPath}/reader/list">Readers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/rent/list">Rent Info</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <br>
+            <br>
+            <br>
+        </div>
+
         <form:form action="/reader/saveReader"  modelAttribute="reader" method="post">
             <form:hidden path="id" />
 
@@ -42,7 +69,7 @@
                         <form:option value="7">7</form:option>
                         <form:option value="8">8</form:option>
                         <form:option value="9">9</form:option>
-                        <form:option value="10">10</form:option>
+                        <form:option selected="10" value="10">10</form:option>
                     </form:select>
                 </div>
 
@@ -65,7 +92,7 @@
                     <form:select cssClass="form-control mb-4 col-4" path="gender" >
                         <form:option value="Male" >Male</form:option>
                         <form:option value="Female">Female</form:option>
-                        <form:option value="Other">Other</form:option>
+                        <form:option selected="Other" value="Other">Other</form:option>
                     </form:select>
                 </div>
 

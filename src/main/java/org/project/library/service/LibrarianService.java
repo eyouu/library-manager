@@ -13,4 +13,6 @@ public interface LibrarianService {
     void saveLibrarian(Librarian librarian);
 
     void deleteLibrarian(Long id);
+
+    List<Librarian> searchLibrarian(String librarianName);
 }

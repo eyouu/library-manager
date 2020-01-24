@@ -14,4 +14,5 @@ public interface LibrarianDAO {
 
     void deleteLibrarian(Long id);
 
+    List<Librarian> searchLibrarian(String librarianName);
 }

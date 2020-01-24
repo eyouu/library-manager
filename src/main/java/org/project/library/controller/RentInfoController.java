@@ -1,7 +1,5 @@
 package org.project.library.controller;
 
-import org.project.library.entity.Book;
-import org.project.library.entity.Librarian;
 import org.project.library.entity.RentInfo;
 import org.project.library.service.LibrarianService;
 import org.project.library.service.RentInfoService;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,8 +17,6 @@ public class RentInfoController {
     @Autowired
     private RentInfoService rentInfoService;
 
-    @Autowired
-    private LibrarianService librarianService;
 
     @GetMapping("/list")
     public String showRents(Model model) {
@@ -33,46 +28,16 @@ public class RentInfoController {
         return "rents-list";
     }
 
-    @GetMapping("/addRentForm")
-    public String addRent(Model model) {
-        RentInfo rentInfo = new RentInfo();
-
-        model.addAttribute("rentInfo", rentInfo);
-
-        List<Librarian> librarians = librarianService.getLibrarians();
-        model.addAttribute("librarians", librarians);
-
-        return "rent-save-form";
-    }
-
-    @PostMapping("/saveRent")
-    public String saveRent(@ModelAttribute("rentInfo") RentInfo rentInfo) {
-        rentInfo.setDateOfRent(new Date());
-
-        rentInfoService.saveRent(rentInfo);
+    @GetMapping("/changeStatus")
+    public String changeStatus(@RequestParam("statusId") Long id) {
+        rentInfoService.changeRentStatus(id);
 
         return "redirect:/rent/list";
-    }
-
-    @GetMapping("/updateRent")
-    public String updateRent(@RequestParam("rentId") Long id, Model model) {
-        RentInfo rent = rentInfoService.getRent(id);
-
-        model.addAttribute("rentInfo", rent);
-
-        return "rent-save-form";
     }
 
     @GetMapping("/deleteRent")
     public String deleteRent(@RequestParam("rentId") Long id) {
         rentInfoService.deleteRent(id);
-
-        return "redirect:/rent/list";
-    }
-
-    @GetMapping("/changeStatus")
-    public String changeStatus(@RequestParam("statusId") Long id) {
-        rentInfoService.changeRentStatus(id);
 
         return "redirect:/rent/list";
     }

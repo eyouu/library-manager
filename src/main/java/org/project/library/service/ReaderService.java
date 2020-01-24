@@ -13,4 +13,6 @@ public interface ReaderService {
     void saveReader(Reader reader);
 
     void deleteReader(Long id);
+
+    List<Reader> searchReaderByName(String searchName);
 }

@@ -37,4 +37,10 @@ public class LibrarianServiceImpl implements LibrarianService {
     public void deleteLibrarian(Long id) {
         librarianDAO.deleteLibrarian(id);
     }
+
+    @Override
+    @Transactional
+    public List<Librarian> searchLibrarian(String librarianName) {
+        return librarianDAO.searchLibrarian(librarianName);
+    }
 }
