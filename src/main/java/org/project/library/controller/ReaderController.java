@@ -3,11 +3,14 @@ package org.project.library.controller;
 import org.project.library.entity.Reader;
 import org.project.library.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -16,6 +19,14 @@ public class ReaderController {
 
     @Autowired
     private ReaderService readerService;
+
+    // trims white spaces to resolve validation issue
+    @InitBinder
+    private void initBinder(WebDataBinder webDataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
 
     @GetMapping("/list")
     public String showReaders(Model model) {
@@ -36,10 +47,15 @@ public class ReaderController {
     }
 
     @PostMapping("/saveReader")
-    public String saveReader(@ModelAttribute("reader") Reader reader) {
+    public String saveReader(@Valid @ModelAttribute("reader") Reader reader, BindingResult bindingResult) {
 
-        readerService.saveReader(reader);
-        return "redirect:/reader/list";
+        if (bindingResult.hasErrors()) {
+            return "reader-save-form";
+        } else {
+            readerService.saveReader(reader);
+            return "redirect:/reader/list";
+        }
+
     }
 
     @GetMapping("/updateReader")

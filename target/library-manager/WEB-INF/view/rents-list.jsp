@@ -48,7 +48,7 @@
         <h2>Rent Info</h2>
         <hr>
 
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered text-center">
             <thead class="thead-dark">
                 <tr>
                     <th style="width: 13%">
@@ -56,7 +56,7 @@
                             <input class="form-control" placeholder="Rent ID" type="text" name="rentId">
                         </form:form>
                     </th>
-                    <th  style="text-align: center; width: 20%">Status</th>
+                    <th  style="width: 20%">Status</th>
                     <th style="width: 13%">
                         <form:form  action="searchByReaderId" method="get">
                             <input class="form-control" placeholder="Reader ID" type="text" name="readerId">
@@ -68,8 +68,8 @@
                             <input class="form-control" placeholder="Book ID" type="text" name="bookId">
                         </form:form>
                     </th>
-                    <th style="text-align: center; width: 20%">Date of Rent</th>
-                    <th style="text-align: center">Action</th>
+                    <th style="width: 20%">Date of Rent</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -85,16 +85,16 @@
                     </c:url>
 
                 <tr>
-                        <td style="text-align: center">${tempRents.rentId}</td>
+                        <td>${tempRents.rentId}</td>
                     <c:if test="${tempRents.status.equals('IN RENT')}" >
-                        <td style="color:red; text-align: center">${tempRents.status}</td>
+                        <td style="color:red">${tempRents.status}</td>
                     </c:if>
                     <c:if test="${tempRents.status.equals('RETURNED')}" >
-                        <td style="color:black ;text-align: center">${tempRents.status}</td>
+                        <td style="color:black">${tempRents.status}</td>
                     </c:if>
-                        <td style="text-align: center">${tempRents.reader.id}</td>
-                        <td style="text-align: center">${tempRents.book.id}</td>
-                        <td style="text-align: center">${tempRents.dateOfRent}</td>
+                        <td>${tempRents.reader.id}</td>
+                        <td>${tempRents.book.id}</td>
+                        <td>${tempRents.dateOfRent}</td>
                         <td>
                             <a  class="btn btn-warning btn-sm" href="${changeStatusLink}"
                                 onclick="if (!(confirm('Are you sure you want to change rent status?'))) return false"

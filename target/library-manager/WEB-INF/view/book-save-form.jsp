@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="/resources/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Book Save Form</title>
 </head>
@@ -49,34 +49,40 @@
                 <h2>Save New Book</h2>
                 <hr>
 
-                <div class="form-group">
                     <label>Author</label>
-                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Author" path="author" />
+                <div class="form-inline">
+                    <form:input  cssClass="form-control mb-4 col-4 mr-2" placeholder="Author" path="author" />
+                    <form:errors cssClass="error" path="author"/>
                 </div>
 
-                <div class="form-group">
                     <label>Title</label></td>
-                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Title" path="title" />
-                </div class="form-group">
+                <div class="form-inline">
+                    <form:input  cssClass="form-control mb-4 col-4 mr-2" placeholder="Title" path="title" />
+                    <form:errors cssClass="error" path="title"/>
+                </div>
 
-                <div class="form-group">
                     <label>Genre</label>
-                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Genre" path="genre" />
+                <div class="form-inline">
+                    <form:input  cssClass="form-control mb-4 col-4 mr-2" placeholder="Genre" path="genre" />
+                    <form:errors cssClass="error" path="genre"/>
                 </div class="form-group">
 
-                <div class="form-group">
                     <label>Country</label>
-                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Country" path="country" />
+                <div class="form-inline">
+                    <form:input  cssClass="form-control mb-4 col-4 mr-2" placeholder="Country" path="country" />
+                    <form:errors cssClass="error" path="country"/>
                 </div class="form-group">
 
-                <div class="form-group">
                     <label>Publication Date</label>
-                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Publication Date" path="publicationDate" />
+                <div class="form-inline">
+                    <form:input  cssClass="form-control mb-4 col-4 mr-2" placeholder="dd-mm-yyyy" path="publicationDate" />
+                    <form:errors cssClass="error" path="publicationDate"/>
                 </div class="form-group">
 
-                <div class="form-group">
                     <label>Quantity</label>
-                    <form:input  cssClass="form-control mb-4 col-4" placeholder="Quantity" path="quantity" />
+                <div class="form-inline">
+                    <form:input  cssClass="form-control mb-4 col-4 mr-2" placeholder="Quantity" path="quantity" />
+                    <form:errors cssClass="error" path="quantity"/>
                 </div>
 
                 <div>

@@ -19,7 +19,6 @@
 
     <div class="container">
 
-        <div class="navbar-expand{-sm|-md|-lg|-xl}">
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">Books</a>
 
@@ -49,12 +48,11 @@
             <br>
             <br>
             <br>
-        </div>
 
 
             <h2>Readers</h2>
             <br>
-            <table class="table table-striped table-bordered">
+            <table class="table table-hover table-bordered text-center" >
                 <thead class="thead-dark">
                     <tr>
                         <th>Id</th>
@@ -62,11 +60,11 @@
                         <th>Last Name</th>
                         <th>Rating</th>
                         <th>Phone</th>
-                        <th>Email</th>
+                        <th >Email</th>
                         <th>Date of Birth</th>
                         <th>Gender</th>
                         <th>Registration Date</th>
-                        <th>Action</th>
+                        <th style="width: 15%">Action</th>
                     </tr>
                 </thead>
 

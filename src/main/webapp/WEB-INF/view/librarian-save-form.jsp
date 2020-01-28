@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="/resources/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Librarian Save Form</title>
 </head>
@@ -18,9 +18,7 @@
 
         <div class="navbar-expand{-sm|-md|-lg|-xl}">
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">
-                    All Books
-                </a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">Books</a>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
@@ -50,35 +48,41 @@
                 <h2>Save New Librarian</h2>
                 <hr>
 
-                <div class="form-group">
                     <label>First Name</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="First Name" path="firstName"/>
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="First Name" path="firstName"/>
+                    <form:errors cssClass="error" path="firstName" />
                 </div>
 
-                <div class="form-group">
                     <label>Last name</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="Last Name" path="lastName" />
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="Last Name" path="lastName" />
+                    <form:errors cssClass="error" path="lastName" />
                 </div>
 
-                <div class="form-group">
                     <label>Phone</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="+38-(000)-00-00-000" path="phone"/>
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="(000)000-0000" path="phone"/>
+                    <form:errors cssClass="error" path="phone" />
                 </div>
 
 
-                <div class="form-group">
                     <label>Address</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="Street, building, flat" path="address" />
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="Street, building, flat" path="address" />
+                    <form:errors cssClass="error" path="address" />
                 </div>
 
-                <div class="form-group">
                     <label>Email</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="Email" path="email" />
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="Email" path="email" />
+                    <form:errors cssClass="error" path="email" />
                 </div>
 
-                <div class="form-group">
                     <label>Date of Birth</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="dd-mm--yyyy" path="dateOfBirth"/>
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="dd-mm-yyyy" path="dateOfBirth"/>
+                    <form:errors cssClass="error" path="dateOfBirth" />
                 </div>
 
                 <div class="form-group">
@@ -86,13 +90,14 @@
                     <form:select cssClass="form-control mb-4 col-4" path="gender" >
                         <form:option value="Male" >Male</form:option>
                         <form:option value="Female">Female</form:option>
-                        <form:option value="Other">Other</form:option>
+                        <form:option selected="Other" value="Other">Other</form:option>
                     </form:select>
                 </div>
 
-                <div class="form-group">
                     <label>Registration Date</label>
-                    <form:input cssClass="form-control mb-4 col-4" placeholder="dd-mm-yyyy" path="registrationDate" />
+                <div class="form-inline">
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="dd-mm-yyyy" path="registrationDate" />
+                    <form:errors cssClass="error" path="registrationDate" />
                 </div>
 
 

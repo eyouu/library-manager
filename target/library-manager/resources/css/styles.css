@@ -1,3 +1,5 @@
-.table-width {
-    width: 16.66%
+.error {
+    color: red;
+    text-align: center;
+    margin-top: -26px;
 }

@@ -46,19 +46,20 @@
                 <br>
                 <br>
             </div>
+
             <h2>Books</h2>
             <hr>
-                <table class="table table-striped table-bordered">
+                <table  class="table table-hover table-bordered text-center">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Id</th>
-                            <th>Author</th>
+                            <th style="width: 2%">Id</th>
+                            <th style="width: 16%">Author</th>
                             <th>Title</th>
                             <th>Genre</th>
-                            <th>Country</th>
-                            <th>Publication Date</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
+                            <th style="width: 14%">Country</th>
+                            <th style="width: 10%">Publication Date</th>
+                            <th style="width: 6%">Quantity</th>
+                            <th style="width: 22%">Action</th>
                         </tr>
                     </thead>
 

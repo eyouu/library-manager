@@ -1,6 +1,11 @@
 package org.project.library.entity;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -12,21 +17,35 @@ public class Book {
     @Column(name = "id")
     private Long id;
 
+    @NotNull(message = "Please provide a valid author")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.]+", message = "Please provide a valid author")
+    @Size(min = 2, max = 50, message = "Must not be shorter than 2 and longer than 50 characters")
     @Column(name = "author")
     private String author;
 
+    @NotNull(message = "Please provide a valid title")
+    @Size(min = 1, max = 80, message = "Must not be shorter than 1 and longer than 80 characters")
     @Column(name = "title")
     private String title;
 
+    @NotNull(message = "Please provide a valid genre")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.]+", message = "Please provide a valid genre")
+    @Size(min = 2, max = 30, message = "Must not be shorter than 2 and longer than 30 characters")
     @Column(name = "genre")
     private String genre;
 
+    @Pattern(regexp = "[\\-a-zA-Z\\s]+", message = "Please provide a valid country")
+    @Size(min = 4, max = 56, message = "Must not be shorter than 4 and longer than 56 characters")
     @Column(name = "country")
     private String country;
 
+    @NotNull(message = "Please provide a valid publication date")
+    @Pattern(regexp = "([0-9]{2})-([0-9]{2})-([0-9]{4})", message = "Wrong data format. Must be dd-mm-yyyy")
     @Column(name = "publication_date")
     private String publicationDate;
 
+    @NotNull(message = "Please provide a valid quantity")
+    @Min(value = 1, message = "Minimum 1")
     @Column(name = "quantity")
     private Integer quantity;
 
