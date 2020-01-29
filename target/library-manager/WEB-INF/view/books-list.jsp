@@ -1,5 +1,6 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 
@@ -15,18 +16,21 @@
     <body>
 
         <div class="container">
-            <div class="navbar-expand{-sm|-md|-lg|-xl}">
                 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                    <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">Books</a>
+                    <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">
+                        <img src="${pageContext.request.contextPath}/resources/img/book.png" class="d-inline-block align-top" alt="">
+                        Books</a>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="${pageContext.request.contextPath}/book/addBookForm">Add Book</a>
                             </li>
+                            <security:authorize access="hasRole('ADMIN')">
                             <li class="nav-item">
                                 <a class="nav-link" href="${pageContext.request.contextPath}/librarian/list">Librarians</a>
                             </li>
+                            </security:authorize>
                             <li class="nav-item">
                                 <a class="nav-link" href="${pageContext.request.contextPath}/reader/list">Readers</a>
                             </li>
@@ -34,20 +38,24 @@
                                 <a class="nav-link" href="${pageContext.request.contextPath}/rent/list">Rent Info</a>
                             </li>
                         </ul>
-                        <form:form cssClass="form-inline my-2 my-lg-0" action="searchBook" method="get">
+                        <form:form cssClass="form-inline my-2 my-lg-0 m-auto" action="searchBook" method="get">
                             <div class="input-group">
                                 <input class="form-control mr-sm-2" placeholder="Find Book" type="search" name="searchBook" />
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </div>
+                        </form:form>
+                        <div style="color: white; margin-left: 400px;"><security:authentication property="principal.username" /></div>
+                        <form:form cssClass="ml-2" action="${pageContext.request.contextPath}/logout" method="post">
+                            <input class="btn btn-danger ml-2" type="submit" value="Logout" />
                         </form:form>
                     </div>
                 </nav>
                 <br>
                 <br>
                 <br>
-            </div>
 
             <h2>Books</h2>
+
             <hr>
                 <table  class="table table-hover table-bordered text-center">
                     <thead class="thead-dark">
@@ -100,7 +108,6 @@
                         </c:forEach>
                     </tbody>
                 </table>
-            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/">Back</a>
         </div>
     </body>
 </html>

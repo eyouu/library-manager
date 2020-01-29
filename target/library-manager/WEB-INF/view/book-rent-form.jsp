@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,18 +15,21 @@
 
 <body>
     <div class="container">
-        <div class="navbar-expand{-sm|-md|-lg|-xl}">
             <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">Books</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/book/list">
+                    <img src="${pageContext.request.contextPath}/resources/img/book.png" class="d-inline-block align-top" alt="">
+                    Books</a>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/book/addBookForm">Add Book</a>
                         </li>
+                        <security:authorize access="hasRole('ADMIN')">
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/librarian/list">Librarians</a>
                         </li>
+                        </security:authorize>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/reader/list">Readers</a>
                         </li>
@@ -33,10 +37,13 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/rent/list">Rent Info</a>
                         </li>
                     </ul>
+                    <div style="color: white; margin-left: 400px"><security:authentication property="principal.username" /></div>
+                    <form:form cssClass="ml-2" action="${pageContext.request.contextPath}/logout" method="post">
+                        <input class="btn btn-danger ml-2" type="submit" value="Logout" />
+                    </form:form>
                 </div>
             </nav>
             <br><br><br>
-        </div>
 
         <form:form action="/book/saveBookRent" modelAttribute="rentInfo" method="post">
             <form:hidden path="book.id" />
