@@ -15,8 +15,6 @@ public interface RentInfoDAO {
 
     RentInfo getRent(Long id);
 
-    void changeRentStatus(Long id);
-
     List<RentInfo> getRentedBooks();
 
     List<RentInfo> getReturnedBooks();

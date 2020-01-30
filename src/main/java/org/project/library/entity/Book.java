@@ -45,7 +45,7 @@ public class Book {
     private String publicationDate;
 
     @NotNull(message = "Please provide a valid quantity")
-    @Min(value = 1, message = "Minimum 1")
+    @Min(value = 0, message = "Minimum 0")
     @Column(name = "quantity")
     private Integer quantity;
 

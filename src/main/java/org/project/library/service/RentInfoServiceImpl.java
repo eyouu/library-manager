@@ -1,11 +1,16 @@
 package org.project.library.service;
 
+import org.project.library.dao.BookDAO;
+import org.project.library.dao.BookDAOImpl;
 import org.project.library.dao.RentInfoDAO;
+import org.project.library.entity.Book;
 import org.project.library.entity.RentInfo;
+import org.project.library.exception.NotEnoughBookException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -13,6 +18,9 @@ public class RentInfoServiceImpl implements RentInfoService {
 
     @Autowired
     private RentInfoDAO rentInfoDAO;
+
+    @Autowired
+    private BookDAO bookDAO;
 
 
     @Override
@@ -24,12 +32,33 @@ public class RentInfoServiceImpl implements RentInfoService {
     @Override
     @Transactional
     public void saveRent(RentInfo rentInfo) {
+        Long bookId = rentInfo.getBook().getId();
+        Book book = bookDAO.getBook(bookId);
+        int bookQuantity = book.getQuantity();
+
+        if (bookQuantity > 0) {
+            book.setQuantity(bookQuantity - 1);
+        } else {
+            throw new NotEnoughBookException();
+        }
+
+        rentInfo.setDateOfRent(new Date());
+        rentInfo.setStatus("IN RENT");
+
         rentInfoDAO.saveRent(rentInfo);
     }
 
     @Override
     @Transactional
     public void deleteRent(Long id) {
+        RentInfo rentInfo = rentInfoDAO.getRent(id);
+
+        if (rentInfo.getBook() == null) {
+        } else if (rentInfo.getStatus().equals("IN RENT")) {
+            // if delete rentInfo when book "IN RENT" set book quantity +1 to avoid book leak
+            rentInfo.getBook().setQuantity(rentInfo.getBook().getQuantity() + 1);
+        }
+
         rentInfoDAO.deleteRent(id);
     }
 
@@ -42,7 +71,28 @@ public class RentInfoServiceImpl implements RentInfoService {
     @Override
     @Transactional
     public void changeRentStatus(Long id) {
-        rentInfoDAO.changeRentStatus(id);
+        RentInfo rentInfo = rentInfoDAO.getRent(id);
+
+        if (rentInfo.getBook() == null) {
+            String rentStatus = rentInfo.getStatus();
+            if (rentStatus.equals("IN RENT")) {
+                rentStatus = "RETURNED";
+            } else {
+                rentStatus = "IN RENT";
+            }
+            rentInfo.setStatus(rentStatus);
+        }  else {
+            String rentStatus = rentInfo.getStatus();
+
+            if (rentStatus.equals("IN RENT")) {
+                rentStatus = "RETURNED";
+                rentInfo.getBook().setQuantity(rentInfo.getBook().getQuantity() + 1);
+            } else {
+                rentStatus = "IN RENT";
+                rentInfo.getBook().setQuantity(rentInfo.getBook().getQuantity() - 1);
+            }
+            rentInfo.setStatus(rentStatus);
+        }
     }
 
     @Override

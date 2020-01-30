@@ -86,8 +86,8 @@ public class BookController {
         Book book = bookService.getBook(id);
 
         RentInfo rentInfo = new RentInfo();
-
         rentInfo.setBook(book);
+
         model.addAttribute("rentInfo", rentInfo);
 
         return "book-rent-form";
@@ -95,11 +95,8 @@ public class BookController {
 
     @PostMapping("/saveBookRent")
     public String saveBookRent(@ModelAttribute("rentInfo") RentInfo rentInfo) {
-        rentInfo.setDateOfRent(new Date());
-
-        rentInfo.setStatus("IN RENT");
-
         rentInfoService.saveRent(rentInfo);
+
         return "redirect:/book/list";
     }
 

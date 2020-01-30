@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.project.library.entity.Book;
-import org.project.library.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -46,10 +45,7 @@ public class BookDAOImpl implements BookDAO {
     public void deleteBook(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("delete from Book where id=:bookId");
-        session.createQuery("update RentInfo set book.id=null").executeUpdate();
-
-        query.setParameter("bookId", id);
-        query.executeUpdate();
+        query.setParameter("bookId", id).executeUpdate();
     }
 
     @Override

@@ -94,7 +94,14 @@
                             <td>${tempBook.genre}</td>
                             <td>${tempBook.country}</td>
                             <td>${tempBook.publicationDate}</td>
-                            <td>${tempBook.quantity}</td>
+                            <c:choose>
+                                <c:when test="${tempBook.quantity == 0}">
+                                    <td style="color: red">${tempBook.quantity}</td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td>${tempBook.quantity}</td>
+                                </c:otherwise>
+                            </c:choose>
                             <td>
                                 <a class="btn  btn-warning btn-sm" href="${rentLink}">Rent Book</a>
                                 <a class="btn  btn-success btn-sm" href="${updateLink}">Update</a>
