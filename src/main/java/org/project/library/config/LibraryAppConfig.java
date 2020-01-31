@@ -1,12 +1,10 @@
 package org.project.library.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -25,12 +23,15 @@ import java.util.Properties;
 @Configuration
 @ComponentScan("org.project.library")
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @EnableTransactionManagement
 @PropertySource("classpath:persistence-mysql.properties")
 public class LibraryAppConfig implements WebMvcConfigurer {
 
     @Autowired
     private Environment env;
+
+    private static final Logger logger = Logger.getLogger(LibraryAppConfig.class);
 
     @Bean
     public ViewResolver viewResolver() {
@@ -44,13 +45,18 @@ public class LibraryAppConfig implements WebMvcConfigurer {
 
     @Bean
     public DataSource dataSource() {
+        logger.info("Setting up dataSource");
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
 
         try {
             dataSource.setDriverClass(env.getProperty("jdbc.driver"));
         } catch (PropertyVetoException e) {
+            logger.error("Something bad with jdbc Driver class");
             throw new RuntimeException(e);
         }
+
+        logger.info("DataSource: jdbc.url = " + env.getProperty("jdbc.url"));
+        logger.info("DataSource: jdbc.user = " + env.getProperty("jdbc.user"));
 
         dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
         dataSource.setUser(env.getProperty("jdbc.user"));
@@ -66,6 +72,7 @@ public class LibraryAppConfig implements WebMvcConfigurer {
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
+        logger.info("Setting up sessionFactory");
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 
         sessionFactory.setDataSource(dataSource());
@@ -78,6 +85,7 @@ public class LibraryAppConfig implements WebMvcConfigurer {
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
+        logger.info("Setting up transactionManager");
         HibernateTransactionManager txManager = new HibernateTransactionManager();
 
         txManager.setSessionFactory(sessionFactory);

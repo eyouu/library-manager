@@ -13,7 +13,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -33,7 +32,6 @@ public class BookController {
 
         webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
-
 
     @GetMapping("/list")
     public String showBooks(Model model) {

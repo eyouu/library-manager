@@ -42,7 +42,7 @@
     </nav>
     <br><br><br>
 
-    <h2 class="error-general">Error. Book quantity is 0</h2>
+    <h2 class="error-general">Error. Book quantity is equals to 0</h2>
     <hr>
     <img class="rounded mx-auto d-block mb-2" src="${pageContext.request.contextPath}/resources/img/broken.png" alt="">
 </div>
