@@ -22,13 +22,13 @@
 
                 <c:if test="${param.error != null}">
                     <div class="alert alert-danger m-2" role="alert">
-                        Wrong username or password!
+                        <b>Wrong username or password!</b>
                     </div>
                 </c:if>
 
                 <c:if test="${param.logout != null}">
-                    <div class="alert alert-success m-2" role="alert">
-                        Logged out!
+                    <div class="alert alert-secondary m-2" role="alert">
+                        <b>Logged out!</b>
                     </div>
                 </c:if>
                 <div class="form-group">

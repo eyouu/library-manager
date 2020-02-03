@@ -16,7 +16,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <junit.version>4.13</junit.version>
         <springsecurity.version>5.2.1.RELEASE</springsecurity.version>
         <springframework.version>5.2.1.RELEASE</springframework.version>
         <mysql.connector.version>8.0.18</mysql.connector.version>
@@ -28,6 +27,9 @@
         <jstl.version>1.2</jstl.version>
         <jsp.version>2.3.3</jsp.version>
         <aspectj.version>1.9.4</aspectj.version>
+        <junit.version>5.6.0</junit.version>
+        <springtest.version>5.2.1.RELEASE</springtest.version>
+        <mockito.version>3.2.4</mockito.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
@@ -135,11 +137,28 @@
 
         <!-- JUnit -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Spring test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${springtest.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- Log4j -->
         <dependency>
@@ -147,7 +166,6 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-
 
     </dependencies>
 

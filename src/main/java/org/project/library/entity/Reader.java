@@ -27,11 +27,8 @@ public class Reader {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "rating")
-    private Integer rating;
-
     @NotNull(message = "Please provide a valid phone number")
-    @Pattern(regexp = "\\(\\d{3}\\)\\d{3}-\\d{4}", message = "Please provide a valid phone number format. Must be like (000)000-0000")
+    @Pattern(regexp = "\\d{3}-\\d{3}-\\d{4}", message = "Please provide a valid phone number format. Must be like 000-000-0000")
     @Column(name = "phone")
     private String phone;
 
@@ -41,7 +38,7 @@ public class Reader {
     private String email;
 
     @NotNull(message = "Please provide a valid date of birth")
-    @Pattern(regexp = "([0-9]{2})-([0-9]{2})-([0-9]{4})", message = "Wrong data format. Must be dd-mm-yyyy")
+    @Pattern(regexp = "([0-9]{4})-([0-9]{2})-([0-9]{2})", message = "Wrong data format. Must be yyyy-mm-dd")
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
@@ -81,14 +78,6 @@ public class Reader {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
     }
 
     public String getPhone() {
@@ -145,12 +134,11 @@ public class Reader {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", rating=" + rating +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", gender='" + gender + '\'' +
-                ", registrationDate=" + registrationDate +
+                ", registrationDate='" + registrationDate + '\'' +
                 ", rentInfo=" + rentInfo +
                 '}';
     }

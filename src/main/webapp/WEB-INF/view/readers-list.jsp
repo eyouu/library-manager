@@ -38,8 +38,16 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="${pageContext.request.contextPath}/reader/list">Readers</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/rent/list">Rent Info</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/rent/list" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Rent Info
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/rent/list">Rent Info</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/rent/showBooksInRent">Books In Rent</a>
+                                <a class="dropdown-item" href="${pageContext.request.contextPath}/rent/showReturnedBooks">Returned Books</a>
+                            </div>
                         </li>
                     </ul>
                     <form:form cssClass="form-inline my-2 my-lg-0 m-auto" action="searchByName" method="get">
@@ -61,14 +69,12 @@
 
             <h2>Readers</h2>
             <hr>
-            <br>
             <table class="table table-hover table-bordered text-center" >
                 <thead class="thead-dark">
                     <tr>
                         <th>Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Rating</th>
                         <th>Phone</th>
                         <th >Email</th>
                         <th>Date of Birth</th>
@@ -94,7 +100,6 @@
                                 <td>${tempReader.id}</td>
                                 <td>${tempReader.firstName}</td>
                                 <td>${tempReader.lastName}</td>
-                                <td>${tempReader.rating}</td>
                                 <td>${tempReader.phone}</td>
                                 <td>${tempReader.email}</td>
                                 <td>${tempReader.dateOfBirth}</td>
@@ -114,5 +119,8 @@
 
             <a class="btn btn-secondary" href="${pageContext.request.contextPath}/">Back</a>
     </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

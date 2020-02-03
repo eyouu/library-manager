@@ -52,7 +52,8 @@ public class BookDAOImpl implements BookDAO {
     public List<Book> searchBook(String searchBook) {
         Session session = sessionFactory.getCurrentSession();
 
-        Query<Book> query = session.createQuery("from Book where lower(author) like :theName or lower(title) like :theName", Book.class);
+        Query<Book> query = session.createQuery("from Book where lower(author) like :theName or lower(title) like :theName" +
+                " or lower(genre) like :theName", Book.class);
         query.setParameter("theName", "%" + searchBook.toLowerCase() + "%");
 
         List<Book> foundBooks = query.getResultList();

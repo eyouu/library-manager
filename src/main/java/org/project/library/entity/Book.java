@@ -40,7 +40,7 @@ public class Book {
     private String country;
 
     @NotNull(message = "Please provide a valid publication date")
-    @Pattern(regexp = "([0-9]{2})-([0-9]{2})-([0-9]{4})", message = "Wrong data format. Must be dd-mm-yyyy")
+    @Pattern(regexp = "([0-9]{4})-([0-9]{2})-([0-9]{2})", message = "Wrong data format. Must be yyyy-mm-dd")
     @Column(name = "publication_date")
     private String publicationDate;
 
