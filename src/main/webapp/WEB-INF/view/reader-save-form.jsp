@@ -102,7 +102,7 @@
 
                     <label>Registration Date</label>
                 <div class="form-inline">
-                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="dd-mm-yyyy" path="registrationDate" />
+                    <form:input cssClass="form-control mb-4 col-4 mr-2" placeholder="yyyy-mm-dd" path="registrationDate" />
                     <form:errors cssClass="error" path="registrationDate" />
                 </div>
 

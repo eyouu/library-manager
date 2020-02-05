@@ -1,6 +1,7 @@
 package org.project.library.service;
 
 import org.project.library.dao.ReaderDAO;
+import org.project.library.entity.Book;
 import org.project.library.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,11 @@ public class ReaderServiceImpl implements ReaderService {
     @Transactional
     public List<Reader> searchReaderByName(String searchName) {
         return readerDAO.searchReaderByName(searchName);
+    }
+
+    @Override
+    @Transactional
+    public List<Book> getReaderBooks(Long readerId) {
+        return readerDAO.getReaderBooks(readerId);
     }
 }

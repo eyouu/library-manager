@@ -2,6 +2,7 @@ package org.project.library.dao;
 
 
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface BookDAO {
     void deleteBook(Long id);
 
     List<Book> searchBook(String searchBook);
+
+    List<Reader> getBookReaders(Long bookId);
 }

@@ -1,5 +1,6 @@
 package org.project.library.controller;
 
+import org.project.library.entity.Book;
 import org.project.library.entity.Reader;
 import org.project.library.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class ReaderController {
 
     @Autowired
     private ReaderService readerService;
+
 
     // trims white spaces to resolve validation issue
     @InitBinder
@@ -81,5 +83,17 @@ public class ReaderController {
         model.addAttribute("readers", readers);
 
         return "readers-list";
+    }
+
+    @GetMapping("/showReaderBooks")
+    public String showReaderBooks(@RequestParam("readerId") Long id, Model model) {
+        List<Book> books = readerService.getReaderBooks(id);
+
+        Reader reader = readerService.getReader(id);
+
+        model.addAttribute("books", books);
+        model.addAttribute("reader", reader);
+
+        return "reader-books";
     }
 }

@@ -1,6 +1,7 @@
 package org.project.library.controller;
 
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 import org.project.library.entity.RentInfo;
 import org.project.library.service.BookService;
 import org.project.library.service.RentInfoService;
@@ -107,5 +108,15 @@ public class BookController {
         return "books-list";
     }
 
+    @GetMapping("/showBookReaders")
+    public String showBookReaders(@RequestParam("bookId") Long id, Model model) {
+        List<Reader> readers = bookService.getBookReaders(id);
+
+        Book book = bookService.getBook(id);
+
+        model.addAttribute("readers", readers);
+        model.addAttribute("book", book);
+        return "book-readers";
+    }
 
 }

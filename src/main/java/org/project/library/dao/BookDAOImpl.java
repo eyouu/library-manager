@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -59,6 +60,17 @@ public class BookDAOImpl implements BookDAO {
         List<Book> foundBooks = query.getResultList();
 
         return foundBooks;
+    }
+
+
+    public List<Reader> getBookReaders(Long bookId) {
+        Session session = sessionFactory.getCurrentSession();
+        Query q = session.createQuery("from Book b join fetch b.readers r WHERE b.id = :id");
+
+        Book book = (Book) q.setParameter("id", bookId).getSingleResult();
+        List<Reader> readers = book.getReaders();
+
+        return readers;
     }
 
 }

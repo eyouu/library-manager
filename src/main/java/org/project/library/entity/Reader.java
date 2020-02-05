@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,12 +47,21 @@ public class Reader {
     private String gender;
 
     @NotNull(message = "Please provide a valid registration date")
-    @Pattern(regexp = "([0-9]{2})-([0-9]{2})-([0-9]{4})", message = "Wrong data format. Must be dd-mm-yyyy")
+    @Pattern(regexp = "([0-9]{4})-([0-9]{2})-([0-9]{2})", message = "Wrong data format. Must be yyyy-mm-dd")
     @Column(name = "registration_date")
     private String registrationDate;
 
     @OneToMany(mappedBy = "reader", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RentInfo> rentInfo;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+    @JoinTable(
+            name = "book_reader",
+            joinColumns = @JoinColumn(name = "reader_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+            )
+    private List<Book> books = new ArrayList<>();
 
     public Reader() {
     }
@@ -128,6 +138,22 @@ public class Reader {
         this.rentInfo = rentInfo;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void addBook(Book book) {
+        this.books.add(book);
+    }
+
+    public void removeBook(Book book) {
+        this.books.remove(book);
+    }
+
     @Override
     public String toString() {
         return "Reader{" +
@@ -140,6 +166,7 @@ public class Reader {
                 ", gender='" + gender + '\'' +
                 ", registrationDate='" + registrationDate + '\'' +
                 ", rentInfo=" + rentInfo +
+                ", books=" + books +
                 '}';
     }
 }

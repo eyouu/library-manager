@@ -1,7 +1,6 @@
 package org.project.library.service;
 
 import org.project.library.dao.BookDAO;
-import org.project.library.dao.BookDAOImpl;
 import org.project.library.dao.RentInfoDAO;
 import org.project.library.entity.Book;
 import org.project.library.entity.RentInfo;
@@ -33,14 +32,11 @@ public class RentInfoServiceImpl implements RentInfoService {
     @Transactional
     public void saveRent(RentInfo rentInfo) {
         Long bookId = rentInfo.getBook().getId();
-        Book book = bookDAO.getBook(bookId);
-        int bookQuantity = book.getQuantity();
 
-        if (bookQuantity > 0) {
-            book.setQuantity(bookQuantity - 1);
-        } else {
-            throw new NotEnoughBookException();
-        }
+        changeBookQuantityAfterRent(bookId);
+
+        Book book = bookDAO.getBook(bookId);
+        book.addReader(rentInfo.getReader());
 
         rentInfo.setDateOfRent(new Date());
         rentInfo.setStatus("IN RENT");
@@ -73,26 +69,26 @@ public class RentInfoServiceImpl implements RentInfoService {
     public void changeRentStatus(Long id) {
         RentInfo rentInfo = rentInfoDAO.getRent(id);
 
+        String rentStatus = rentInfo.getStatus();
+
         if (rentInfo.getBook() == null) {
-            String rentStatus = rentInfo.getStatus();
             if (rentStatus.equals("IN RENT")) {
                 rentStatus = "RETURNED";
             } else {
                 rentStatus = "IN RENT";
             }
-            rentInfo.setStatus(rentStatus);
-        }  else {
-            String rentStatus = rentInfo.getStatus();
-
+        } else {
             if (rentStatus.equals("IN RENT")) {
+                rentInfo.getBook().removeReader(rentInfo.getReader());
                 rentStatus = "RETURNED";
                 rentInfo.getBook().setQuantity(rentInfo.getBook().getQuantity() + 1);
             } else {
+                rentInfo.getBook().addReader(rentInfo.getReader());
                 rentStatus = "IN RENT";
                 rentInfo.getBook().setQuantity(rentInfo.getBook().getQuantity() - 1);
             }
-            rentInfo.setStatus(rentStatus);
         }
+        rentInfo.setStatus(rentStatus);
     }
 
     @Override
@@ -123,5 +119,16 @@ public class RentInfoServiceImpl implements RentInfoService {
     @Transactional
     public List<RentInfo> searchRentByRentId(Long rentId) {
         return rentInfoDAO.searchRentByRentId(rentId);
+    }
+
+    private void changeBookQuantityAfterRent(Long bookId) {
+        Book book = bookDAO.getBook(bookId);
+        int bookQuantity = book.getQuantity();
+
+        if (bookQuantity > 0) {
+            book.setQuantity(bookQuantity - 1);
+        } else {
+            throw new NotEnoughBookException();
+        }
     }
 }

@@ -80,18 +80,21 @@
                         <th>Date of Birth</th>
                         <th>Gender</th>
                         <th>Registration Date</th>
-                        <th style="width: 15%">Action</th>
+                        <th style="width: 20%">Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
                         <c:forEach var="tempReader" items="${readers}">
 
-                            <c:url var="updateLing" value="/reader/updateReader">
+                            <c:url var="updateLink" value="/reader/updateReader">
                                 <c:param name="readerId" value="${tempReader.id}" />
                             </c:url>
 
                             <c:url var="deleteLink" value="/reader/deleteReader" >
+                                <c:param name="readerId" value="${tempReader.id}" />
+                            </c:url>
+                            <c:url var="booksLink" value="/reader/showReaderBooks">
                                 <c:param name="readerId" value="${tempReader.id}" />
                             </c:url>
 
@@ -106,7 +109,8 @@
                                 <td>${tempReader.gender}</td>
                                 <td>${tempReader.registrationDate}</td>
                                 <td>
-                                    <a class="btn  btn-success btn-sm" href="${updateLing}">Update</a>
+                                    <a class="btn  btn-success btn-sm" href="${updateLink}">Update</a>
+                                    <a class="btn  btn-info btn-sm" href="${booksLink}">Books</a>
                                     <a class="btn btn-danger btn-sm" href="${deleteLink}"
                                        onclick="if (!(confirm('Are you sure you want to delete this Reader?'))) return false"
                                     >Delete</a>

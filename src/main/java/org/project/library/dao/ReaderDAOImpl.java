@@ -3,6 +3,7 @@ package org.project.library.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.project.library.entity.Book;
 import org.project.library.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -63,5 +64,16 @@ public class ReaderDAOImpl implements ReaderDAO {
         List<Reader> readers = query.getResultList();
 
         return readers;
+    }
+
+    @Override
+    public List<Book> getReaderBooks(Long readerId) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Query q = session.createQuery("from Reader r join fetch r.books b WHERE r.id = :id");
+        Reader reader = (Reader) q.setParameter("id", readerId).getSingleResult();
+        List<Book> books = reader.getBooks();
+
+        return books;
     }
 }

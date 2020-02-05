@@ -1,6 +1,7 @@
 package org.project.library.service;
 
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface BookService {
     void deleteBook(Long id);
 
     List<Book> searchBook(String searchBook);
+
+    List<Reader> getBookReaders(Long bookId);
 }

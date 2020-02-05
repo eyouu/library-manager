@@ -2,6 +2,7 @@ package org.project.library.service;
 
 import org.project.library.dao.BookDAO;
 import org.project.library.entity.Book;
+import org.project.library.entity.Reader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +43,13 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public List<Book> searchBook(String searchBook) {
         return bookDAO.searchBook(searchBook);
+    }
+
+    @Override
+    @Transactional
+    public List<Reader> getBookReaders(Long bookId) {
+        List<Reader> bookReaders = bookDAO.getBookReaders(bookId);
+        return bookReaders;
     }
 
 }

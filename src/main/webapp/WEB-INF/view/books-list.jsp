@@ -72,8 +72,8 @@
                             <th>Genre</th>
                             <th style="width: 14%">Country</th>
                             <th style="width: 10%">Publication Date</th>
-                            <th style="width: 6%">Quantity</th>
-                            <th style="width: 22%">Action</th>
+                            <th style="width: 4%">Quantity</th>
+                            <th style="width: 28%">Action</th>
                         </tr>
                     </thead>
 
@@ -90,6 +90,10 @@
 
                             <c:url var="rentLink" value="/book/rentBook">
                                 <c:param name="bookId" value="${tempBook.id}"/>
+                            </c:url>
+
+                            <c:url var="readersLink" value="/book/showBookReaders">
+                                <c:param name="bookId" value="${tempBook.id}" />
                             </c:url>
 
 
@@ -111,6 +115,7 @@
                             <td>
                                 <a class="btn  btn-warning btn-sm" href="${rentLink}">Rent Book</a>
                                 <a class="btn  btn-success btn-sm" href="${updateLink}">Update</a>
+                                <a class="btn  btn-info btn-sm" href="${readersLink}">Readers</a>
                                 <a class="btn  btn-danger btn-sm" href="${deleteLink}"
                                    onclick="if (!(confirm('Are you sure you want to delete this book?'))) return false"
                                 >Delete</a>

@@ -6,6 +6,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -51,6 +52,15 @@ public class Book {
 
     @OneToMany(mappedBy = "book", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RentInfo> rentInfo;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+    @JoinTable(
+            name = "book_reader",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "reader_id")
+            )
+    private List<Reader> readers = new ArrayList<>();
 
     public Book() {
     }
@@ -119,6 +129,22 @@ public class Book {
         this.rentInfo = rentInfo;
     }
 
+    public List<Reader> getReaders() {
+        return readers;
+    }
+
+    public void setReaders(List<Reader> readers) {
+        this.readers = readers;
+    }
+
+    public void addReader(Reader reader) {
+        this.readers.add(reader);
+    }
+
+    public void removeReader(Reader reader) {
+        this.readers.remove(reader);
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -130,6 +156,7 @@ public class Book {
                 ", publicationDate='" + publicationDate + '\'' +
                 ", quantity=" + quantity +
                 ", rentInfo=" + rentInfo +
+                ", readers=" + readers +
                 '}';
     }
 }
