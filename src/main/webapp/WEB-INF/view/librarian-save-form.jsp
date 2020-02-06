@@ -45,7 +45,14 @@
                             </div>
                         </li>
                     </ul>
-                    <div style="color: white; margin-left: 400px"><security:authentication property="principal.username" /></div>
+                    <security:authorize access="hasRole('ADMIN')">
+                        <a style="margin-left: 70px" href="${pageContext.request.contextPath}/register/showRegistrationForm"
+                           class="btn btn-outline-primary"
+                           role="button" aria-pressed="true">
+                            Register New User
+                        </a>
+                    </security:authorize>
+                    <div style="color: white; margin-left: 200px"><security:authentication property="principal.username" /></div>
                     <form:form cssClass="ml-2" action="${pageContext.request.contextPath}/logout" method="post">
                         <input class="btn btn-danger ml-2" type="submit" value="Logout" />
                     </form:form>
