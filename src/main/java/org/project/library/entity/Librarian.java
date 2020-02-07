@@ -16,13 +16,13 @@ public class Librarian {
     private Long id;
 
     @NotNull(message = "Please provide a valid first name")
-    @Pattern(regexp = "[\\-a-zA-Z\\s.]+", message = "Please provide a valid first name")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.']+", message = "Please provide a valid first name")
     @Size(min = 2, max = 20, message = "Must not be shorter than 2 and longer than 20 characters")
     @Column(name = "first_name")
     private String firstName;
 
     @NotNull(message = "Please provide a valid last name")
-    @Pattern(regexp = "[\\-a-zA-Z\\s.]+", message = "Please provide a valid last name")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.']+", message = "Please provide a valid last name")
     @Size(min = 2, max = 20, message = "Must not be shorter than 2 and longer than 20 characters")
     @Column(name = "last_name")
     private String lastName;
@@ -50,7 +50,7 @@ public class Librarian {
     private String gender;
 
     @NotNull(message = "Please provide a valid date of birth")
-    @Pattern(regexp = "([0-9]{2})-([0-9]{2})-([0-9]{4})", message = "Wrong data format. Must be dd-mm-yyyy")
+    @Pattern(regexp = "([0-9]{4})-([0-9]{2})-([0-9]{2})", message = "Wrong data format. Must be yyyy-mm-dd")
     @Column(name = "registration_date")
     private String registrationDate;
 

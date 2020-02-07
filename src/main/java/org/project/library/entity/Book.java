@@ -19,7 +19,7 @@ public class Book {
     private Long id;
 
     @NotNull(message = "Please provide a valid author")
-    @Pattern(regexp = "[\\-a-zA-Z\\s.]+", message = "Please provide a valid author")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.']+", message = "Please provide a valid author")
     @Size(min = 2, max = 50, message = "Must not be shorter than 2 and longer than 50 characters")
     @Column(name = "author")
     private String author;
@@ -30,13 +30,13 @@ public class Book {
     private String title;
 
     @NotNull(message = "Please provide a valid genre")
-    @Pattern(regexp = "[\\-a-zA-Z\\s.]+", message = "Please provide a valid genre")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.,]+", message = "Please provide a valid genre")
     @Size(min = 2, max = 30, message = "Must not be shorter than 2 and longer than 30 characters")
     @Column(name = "genre")
     private String genre;
 
     @Pattern(regexp = "[\\-a-zA-Z\\s]+", message = "Please provide a valid country")
-    @Size(min = 4, max = 56, message = "Must not be shorter than 4 and longer than 56 characters")
+    @Size(min = 3, max = 56, message = "Must not be shorter than 4 and longer than 56 characters")
     @Column(name = "country")
     private String country;
 

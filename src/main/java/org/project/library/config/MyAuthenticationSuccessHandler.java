@@ -23,12 +23,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException, ServletException {
 
-        System.out.println("\n\nIn MyAuthenticationSuccessHandler\n\n");
-
         String userName = authentication.getName();
-
-        System.out.println("userName=" + userName);
-
         User theUser = userService.findByUserName(userName);
 
         HttpSession session = request.getSession();

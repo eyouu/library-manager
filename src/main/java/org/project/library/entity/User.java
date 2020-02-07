@@ -1,7 +1,6 @@
 package org.project.library.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 @Entity

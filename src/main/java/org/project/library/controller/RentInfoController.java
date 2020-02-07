@@ -4,7 +4,6 @@ import org.project.library.entity.Book;
 import org.project.library.entity.Reader;
 import org.project.library.entity.RentInfo;
 import org.project.library.service.BookService;
-import org.project.library.service.LibrarianService;
 import org.project.library.service.ReaderService;
 import org.project.library.service.RentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/rent")
@@ -30,10 +28,9 @@ public class RentInfoController {
 
     @GetMapping("/list")
     public String showRents(Model model) {
-
         List<RentInfo> rents = rentInfoService.getRentList();
-        model.addAttribute("rents", rents);
 
+        model.addAttribute("rents", rents);
 
         return "rents-list";
     }
@@ -54,8 +51,8 @@ public class RentInfoController {
 
     @GetMapping("/showBooksInRent")
     public String showBooksInRent(Model model) {
-
         List<RentInfo> booksInRent = rentInfoService.getRentedBooks();
+
         model.addAttribute("rents", booksInRent);
 
         return "rents-list";
@@ -63,8 +60,8 @@ public class RentInfoController {
 
     @GetMapping("/showReturnedBooks")
     public String showReturnedBooks(Model model) {
-
         List<RentInfo> returnedBooks = rentInfoService.getReturnedBooks();
+
         model.addAttribute("rents", returnedBooks);
 
         return "rents-list";
@@ -73,7 +70,6 @@ public class RentInfoController {
     @GetMapping("/showMoreRentDetails")
     public String showMoreRentDetails(@RequestParam("rentId") Long rentId, Model model) {
         RentInfo rentInfo = rentInfoService.getRent(rentId);
-
         Book book = bookService.getBook(rentInfo.getBook().getId());
         Reader reader = readerService.getReader(rentInfo.getReader().getId());
 
@@ -86,7 +82,6 @@ public class RentInfoController {
 
     @GetMapping("/searchByRentId")
     public String searchByRentId(@RequestParam("rentId") Long rentId, Model model) {
-
         List<RentInfo> rents = rentInfoService.searchRentByRentId(rentId);
 
         model.addAttribute("rents", rents);
@@ -96,8 +91,8 @@ public class RentInfoController {
 
     @GetMapping("/searchByReaderId")
     public String searchByReaderId(@RequestParam("readerId") Long readerId, Model model) {
-
         List<RentInfo> rents = rentInfoService.searchRentByReaderId(readerId);
+
         model.addAttribute("rents", rents);
 
         return "rents-list";
@@ -105,8 +100,8 @@ public class RentInfoController {
 
     @GetMapping("/searchByBookId")
     public String searchByBookId(@RequestParam("bookId") Long bookId, Model model) {
-
         List<RentInfo> rents = rentInfoService.searchRentByBookId(bookId);
+
         model.addAttribute("rents", rents);
 
         return "rents-list";

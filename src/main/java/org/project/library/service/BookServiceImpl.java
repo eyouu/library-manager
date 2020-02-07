@@ -48,8 +48,7 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public List<Reader> getBookReaders(Long bookId) {
-        List<Reader> bookReaders = bookDAO.getBookReaders(bookId);
-        return bookReaders;
+        return bookDAO.getBookReaders(bookId);
     }
 
 }

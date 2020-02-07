@@ -1,15 +1,16 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="/resources/img/books-stack-of-three.png" type="image/icon type">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/books-stack-of-three.png" type="image/icon type">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/books-stack-of-three.png" type="image/icon type">
+    <title>Login</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Login Page</title>
 </head>
 <body>
     <div class="container h-150">
@@ -31,6 +32,7 @@
                         <b>Logged out!</b>
                     </div>
                 </c:if>
+
                 <div class="form-group">
                     <input type="text" class="form-control" id="username" placeholder="Username" name="username">
                 </div>
@@ -41,6 +43,7 @@
                 <button type="submit" class="btn btn-dark col-4">Login</button>
                 </div>
             </form:form>
+
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ public class ReaderDAOImpl implements ReaderDAO {
     public List<Reader> getReaders() {
         Session session = sessionFactory.getCurrentSession();
 
-        Query<Reader> query = session.createQuery("from Reader", Reader.class);
+        Query<Reader> query = session.createQuery("from Reader order by registrationDate desc", Reader.class);
         List<Reader> readers = query.getResultList();
 
         return readers;
@@ -49,8 +49,7 @@ public class ReaderDAOImpl implements ReaderDAO {
         Query query = session.createQuery("delete from Reader where id=:readerId");
         session.createQuery("update RentInfo set reader.id=null").executeUpdate();
 
-        query.setParameter("readerId", id);
-        query.executeUpdate();
+        query.setParameter("readerId", id).executeUpdate();
     }
 
     @Override

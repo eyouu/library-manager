@@ -7,7 +7,6 @@ import org.project.library.entity.Librarian;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -47,8 +46,7 @@ public class LibrarianDAOImpl implements LibrarianDAO {
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("delete from Librarian where id=:librarianId");
-        query.setParameter("librarianId", id);
-        query.executeUpdate();
+        query.setParameter("librarianId", id).executeUpdate();
     }
 
     @Override
@@ -60,6 +58,7 @@ public class LibrarianDAOImpl implements LibrarianDAO {
         query.setParameter("theName", "%" + librarianName.toLowerCase() + "%");
 
         List<Librarian> foundLibrarians = query.getResultList();
+
         return foundLibrarians;
     }
 

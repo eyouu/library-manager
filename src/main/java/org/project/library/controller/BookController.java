@@ -111,11 +111,11 @@ public class BookController {
     @GetMapping("/showBookReaders")
     public String showBookReaders(@RequestParam("bookId") Long id, Model model) {
         List<Reader> readers = bookService.getBookReaders(id);
-
         Book book = bookService.getBook(id);
 
         model.addAttribute("readers", readers);
         model.addAttribute("book", book);
+
         return "book-readers";
     }
 

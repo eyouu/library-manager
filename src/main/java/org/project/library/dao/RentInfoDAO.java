@@ -1,6 +1,5 @@
 package org.project.library.dao;
 
-import org.project.library.entity.Book;
 import org.project.library.entity.RentInfo;
 
 import java.util.List;

@@ -4,6 +4,7 @@ import org.project.library.validation.FieldMatch;
 import org.project.library.validation.ValidEmail;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @FieldMatch.List({
@@ -24,10 +25,12 @@ public class LibraryUser {
     private String matchingPassword;
 
     @NotNull(message = "is required")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.']+", message = "Please provide a valid first name")
     @Size(min = 1, message = "is required")
     private String firstName;
 
     @NotNull(message = "is required")
+    @Pattern(regexp = "[\\-a-zA-Z\\s.']+", message = "Please provide a valid last name")
     @Size(min = 1, message = "is required")
     private String lastName;
 

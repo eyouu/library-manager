@@ -46,7 +46,6 @@ public class RegistrationController {
         String userName = libraryUser.getUserName();
         logger.info("Processing registration form for: " + userName);
 
-        // form validation
         if (theBindingResult.hasErrors()){
             return "registration-form";
         }
@@ -61,9 +60,7 @@ public class RegistrationController {
             return "registration-form";
         }
 
-        // create user account
         userService.save(libraryUser);
-
         logger.info("Successfully created user: " + userName);
 
         return "registration-confirmation";
