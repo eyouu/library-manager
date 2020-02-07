@@ -49,12 +49,15 @@ public class RentInfoServiceImpl implements RentInfoService {
     public void deleteRent(Long id) {
         RentInfo rentInfo = rentInfoDAO.getRent(id);
 
+        if (rentInfo != null) {
+            rentInfo.getBook().removeReader(rentInfo.getReader());
+        }
+
         if (rentInfo.getBook() == null) {
         } else if (rentInfo.getStatus().equals("IN RENT")) {
             // if delete rentInfo when book "IN RENT" set book quantity +1 to avoid book leak
             rentInfo.getBook().setQuantity(rentInfo.getBook().getQuantity() + 1);
         }
-
         rentInfoDAO.deleteRent(id);
     }
 
