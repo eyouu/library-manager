@@ -20,14 +20,14 @@ Library manager program written in Java with with the following frameworks, libr
 
 # Registered users by default
 
-**Admin Rules** (sees all the content, can register new users)
-User: admin
-Password: admin
+**Admin Rules** (sees all the content, can register new users):  
+User: admin  
+Password: admin  
 
-**Librarian Rules**
-User: testlibrarian
-Password: testlibrarian
-
-User: keanu
-Password: keanu
+**Librarian Rules**:  
+User: testlibrarian  
+Password: testlibrarian  
+  
+User: keanu  
+Password: keanu  
 
