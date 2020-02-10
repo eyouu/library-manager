@@ -1,6 +1,8 @@
 # Library Manager
-Library manager program written in Java with with the following frameworks and libraries:
+Library manager program written in Java with with the following frameworks, libraries, technologies:
 
+* Java 8
+* MySQL
 * Spring Web MVC
 * Spring ORM
 * Spring Security
