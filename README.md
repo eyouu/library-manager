@@ -15,16 +15,17 @@ Library manager program written in Java with with the following frameworks, libr
 
 
 # To test the code
-1. Run **create database user.sql** from sql-scripts folder to create Database (MySQL) user same as in the program config.
-2. Run **library-manager schema tables and data.sql** from sql-scripts folder to create schema, tables and populate tables with data.
+1. Run **library-manager schema tables and data.sql** from sql-scripts folder to create schema, tables and populate tables with data.
+2. Set up your own database connection (file -> library-manager/src/main/resources/**persistence-mysql.properties**) properties instead of underlined lines. ![](https://i.imgur.com/YaSeCvi.png)
+3. Set up folder where to save program logs (not necessary) (file -> library-manager/src/main/resources/**log4j.properties**) ![](https://i.imgur.com/r2CFUoH.png)
 
 # Registered users by default
 
-**Admin Rules** (sees all the content, can register new users):  
+**Admin Rights** (sees all the content, can register new users):  
 User: admin  
 Password: admin  
 
-**Librarian Rules**:  
+**Librarian Rights**:  
 User: testlibrarian  
 Password: testlibrarian  
   
