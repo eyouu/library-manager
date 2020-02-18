@@ -50,7 +50,7 @@
                         </div>
                     </li>
                 </ul>
-                <div class="">
+                <div class="ml-username">
                     <security:authentication property="principal.username" />
                 </div>
                 <form:form cssClass="ml-2" action="${pageContext.request.contextPath}/logout" method="post">
