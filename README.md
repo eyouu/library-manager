@@ -8,7 +8,7 @@ The program has two types of users with slightly different capabilities: **Libra
 * All the possibilities of a **Librarian**
 
 **Librarian** is the user who has such possibilities:
-* View book list and *add / delete / update / rent* books. View book readers for the particular book.
+* View book list and *add / delete / update / rent* books. View book's readers for the particular book.
 * View reader list and *add / delete / update* readers. View reader's books for the particular reader.
 * View rent info and *change rent status / delete* rent. View more information about rent.
 
